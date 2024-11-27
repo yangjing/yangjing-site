@@ -10,7 +10,7 @@ tags:
   - enum
 ---
 
-*原文地址：[https://www.yangbajing.me/2019/04/17/spring应用enum处理/](https://www.yangbajing.me/2019/04/17/spring%E5%BA%94%E7%94%A8enum%E5%A4%84%E7%90%86/)*
+*原文地址：[https://www.yangjing.me/2019/04/17/spring应用enum处理/](https://www.yangjing.me/2019/04/17/spring%E5%BA%94%E7%94%A8enum%E5%A4%84%E7%90%86/)*
 
 在Spring应用开发中，Java枚举（enum）默认都是使用字符串进行序列化/反序列化的。都通常我们都想将其序列化/反序列化为int值。
 
@@ -138,7 +138,7 @@ resources
 
 服务配置文件内容：
 ```
-com.fasterxml.jackson.module.yangbajing.MyModule
+com.fasterxml.jackson.module.yangjing.MyModule
 ```
 
 **自定义Spring Boot Jackson**
@@ -179,5 +179,5 @@ Java提供了丰富而完善的enum机制，但大部化序列化/反序列化�
 
 Spring还是一个优秀的框架的，从公司/组织层面选择它不会错。
 
-可以在 [https://github.com/yangbajing/spring-reactive-sample](https://github.com/yangbajing/spring-reactive-sample) 找到示例代码。
+可以在 [https://github.com/yangjing/spring-reactive-sample](https://github.com/yangjing/spring-reactive-sample) 找到示例代码。
 

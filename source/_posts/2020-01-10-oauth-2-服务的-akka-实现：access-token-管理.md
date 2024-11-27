@@ -9,7 +9,7 @@ tags:
   - akka-cluster-sharding
   - akka-persistence
 date: 2020-01-10 15:20:30
-categories: 
+categories:
   - scala
   - akka
 ---
@@ -259,4 +259,4 @@ class UserEntity private (
 
 ## 小结
 
-完整源码在Github可以找到 [https://github.com/yangbajing/yangbajing-blog/tree/master/src/main/scala/blog/oauth2](https://github.com/yangbajing/yangbajing-blog/tree/master/src/main/scala/blog/oauth2) 。
+完整源码在Github可以找到 [https://github.com/yangjing/yangjing-site/tree/main/src/main/scala/blog/oauth2](https://github.com/yangjing/yangjing-site/tree/main/src/main/scala/blog/oauth2) 。

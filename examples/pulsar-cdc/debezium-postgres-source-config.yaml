@@ -16,7 +16,7 @@ configs:
     database.user: "postgres"
     database.password: "postgres"
     database.dbname: "postgres"
-    database.server.name: "yangbajing"
+    database.server.name: "yangjing"
     schema.include.list: "public"
     table.include.list: "public.inventory"
     decimal.handling.mode: "string"

@@ -8,7 +8,7 @@ tags:
 - email
 ---
 
-代码地址：[https://github.com/yangbajing/scala-applications/tree/master/email-server](https://github.com/yangbajing/scala-applications/tree/master/email-server)
+代码地址：[https://github.com/yangjing/scala-applications/tree/master/email-server](https://github.com/yangjing/scala-applications/tree/master/email-server)
 
 应用功能是实现一个基于队列的邮件发送服务，每个邮件发送者（使用smtp协议）作为一个`sender`。多个`sender`可以在同一个组`(group)`中，每个组中的`sender`将串行发送邮件。
 
@@ -102,14 +102,14 @@ JMS TCP地址：`tcp://localhost:61616`
 
 *生产测试邮件*
 
-修改[`EmailProducers.scala`](https://github.com/yangbajing/scala-applications/blob/master/email-server/src/main/scala/me/yangbajing/emailserver/demo/EmailProducers.scala)的`activeMqUrl`及`mapMessage`参数，运行`EmailProducers`生产一个邮件发送请求。
+修改[`EmailProducers.scala`](https://github.com/yangjing/scala-applications/blob/master/email-server/src/main/scala/me/yangjing/emailserver/demo/EmailProducers.scala)的`activeMqUrl`及`mapMessage`参数，运行`EmailProducers`生产一个邮件发送请求。
 
 
 ## Akka Http
 
 `Akka Http`是一个完整的`server`和`client`端HTTP开发栈，基于`akka-actor`他`akka-stream`。它不是一个`WEB`框架，而是提供了可以构建`Http`服务的工具包。
 
-`Akka Http`有一套很直观的`DSL`来定义路由，自然的形成了一个树型的路由结构。如[Routes](https://github.com/yangbajing/scala-applications/blob/master/email-server/src/main/scala/me/yangbajing/emailserver/route/Routes.scala)：
+`Akka Http`有一套很直观的`DSL`来定义路由，自然的形成了一个树型的路由结构。如[Routes](https://github.com/yangjing/scala-applications/blob/master/email-server/src/main/scala/me/yangjing/emailserver/route/Routes.scala)：
 
 ```scala
 pathPrefix("email") {
@@ -148,7 +148,7 @@ pathPrefix("email") {
 
 邮件的发送采用了串行发送的方式，这个模式刚好契合`Actor`默认邮箱的`FIFO`处理形式。把收到的邮件发送请求告诉一个`actor`，`actor`再从邮箱里取出，并组装成`XXXXEmail`（邮件发送使用了[commons-email](http://commons.apache.org/proper/commons-email/)）后发送出去。
 
-首先，程序将收到的邮件发送请求交给[`EmailMaster`](https://github.com/yangbajing/scala-applications/blob/master/email-server/src/main/scala/me/yangbajing/emailserver/service/actors/EmailMaster.scala)，`EmailMaster`再根据邮件发送者（连接SMTP的邮箱用户名）来决定将这个发送请求交给哪一个具体的[`EmailGroupActor`](https://github.com/yangbajing/scala-applications/blob/master/email-server/src/main/scala/me/yangbajing/emailserver/service/actors/EmailGroupActor.scala)。
+首先，程序将收到的邮件发送请求交给[`EmailMaster`](https://github.com/yangjing/scala-applications/blob/master/email-server/src/main/scala/me/yangjing/emailserver/service/actors/EmailMaster.scala)，`EmailMaster`再根据邮件发送者（连接SMTP的邮箱用户名）来决定将这个发送请求交给哪一个具体的[`EmailGroupActor`](https://github.com/yangjing/scala-applications/blob/master/email-server/src/main/scala/me/yangjing/emailserver/service/actors/EmailGroupActor.scala)。
 
 这里，程序对邮件发送者（简称：`sender`）做了一个分组。因为对于使用相同`smtp`邮件发送服务提供的`sender`，程序中最后对此类的`sender`做串行发送。而对于不同`smtp`邮件发送服务提供的`sender`，我们可以并发的发送邮件。这个可以通过在定义配置文件的时候指定特定`sender`属于的邮件发送组。
 
@@ -170,7 +170,7 @@ pathPrefix("email") {
 
 ## 连接`ActiveMQ`
 
-连接`ActiveMQ`使用了`JMS`协议，这是一个`Java EE`标准实现的消息队列。代码在：[MQConsumerService](https://github.com/yangbajing/scala-applications/blob/master/email-server/src/main/scala/me/yangbajing/emailserver/service/MQConsumerService.scala)。
+连接`ActiveMQ`使用了`JMS`协议，这是一个`Java EE`标准实现的消息队列。代码在：[MQConsumerService](https://github.com/yangjing/scala-applications/blob/master/email-server/src/main/scala/me/yangjing/emailserver/service/MQConsumerService.scala)。
 
 在`JMS`里，邮件使用`MapMessage`消息发送，程序使用`case match`来匹配期望的消息格式。
 

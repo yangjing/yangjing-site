@@ -9,8 +9,8 @@ tags:
 - cluster
 ---
 
-1. [《PostgreSQL从入门到不后悔》](https://www.yangbajing.me/2018/02/05/postgresql%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8D%E5%90%8E%E6%82%94/)
-2. [《PostgreSQL高可用：逻辑复制》](https://www.yangbajing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/)
+1. [《PostgreSQL从入门到不后悔》](https://www.yangjing.me/2018/02/05/postgresql%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8D%E5%90%8E%E6%82%94/)
+2. [《PostgreSQL高可用：逻辑复制》](https://www.yangjing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/)
 3. [《PostgreSQL高可用 - PG 11集群》](http://localhost:4000/2019/07/12/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8-PG11%E9%9B%86%E7%BE%A4/)
 
 - 高可用性：数据库服务器可以一起工作， 这样如果主要的服务器失效则允许一个第二服务器快速接手它的任务
@@ -33,7 +33,7 @@ $ sudo yum -y update
 $ sudo yum -y install postgresql11-server postgresql11-contrib postgresql
 ```
 
-更多关于PG安装和基础使用方面内容可阅读 [《PostgreSQL从入门到不后悔》](https://www.yangbajing.me/2018/02/05/postgresql%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8D%E5%90%8E%E6%82%94/) 和 [《PostgreSQL高可用：逻辑复制》](https://www.yangbajing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/) 。
+更多关于PG安装和基础使用方面内容可阅读 [《PostgreSQL从入门到不后悔》](https://www.yangjing.me/2018/02/05/postgresql%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8D%E5%90%8E%E6%82%94/) 和 [《PostgreSQL高可用：逻辑复制》](https://www.yangjing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/) 。
 
 ## PostgreSQL 集群设置
 
@@ -47,7 +47,7 @@ $ sudo yum -y install postgresql11-server postgresql11-contrib postgresql
 
 - 主节点：10.0.32.37
 - 热备节点：10.0.32.35
-- 逻辑复制节点：10.0.32.36，有关逻辑复制的内容请阅读：[《PostgreSQL高可用：逻辑复制》](https://www.yangbajing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/)
+- 逻辑复制节点：10.0.32.36，有关逻辑复制的内容请阅读：[《PostgreSQL高可用：逻辑复制》](https://www.yangjing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/)
 
 ## 主节点（10.0.32.37）
 
@@ -70,7 +70,7 @@ wal_keep_segments = 10
 ```
 
 3.. 在 `pg_hba.conf` 文件中为 **pgrepuser** 设置权限规则。允许 **pgrepuser** 从所有地址连接到主节点，并使用基于MD5的密码加密方式。
- 
+
 ```
 host    replication     pgrepuser       0.0.0.0/0               md5
 ```
@@ -115,7 +115,7 @@ sudo systemctl stop postgresql-11
 我们看到以下的操作输出，代表生成备库成功。
 
 ```
-Password: 
+Password:
 pg_basebackup: initiating base backup, waiting for checkpoint to complete
 pg_basebackup: checkpoint completed
 pg_basebackup: write-ahead log start point: 0/6000028 on timeline 1
@@ -172,9 +172,9 @@ psql (11.4)
 
 postgres=# \l
                                      数据库列表
-   名称    |  拥有者  | 字元编码 |  校对规则   |    Ctype    |       存取权限        
+   名称    |  拥有者  | 字元编码 |  校对规则   |    Ctype    |       存取权限
 -----------+----------+----------+-------------+-------------+-----------------------
- postgres  | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 | 
+ postgres  | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 |
  template0 | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 | =c/postgres          +
            |          |          |             |             | postgres=CTc/postgres
  template1 | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 | =c/postgres          +
@@ -192,9 +192,9 @@ psql (11.4)
 
 postgres=# \l
                                      数据库列表
-   名称    |  拥有者  | 字元编码 |  校对规则   |    Ctype    |       存取权限        
+   名称    |  拥有者  | 字元编码 |  校对规则   |    Ctype    |       存取权限
 -----------+----------+----------+-------------+-------------+-----------------------
- postgres  | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 | 
+ postgres  | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 |
  template0 | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 | =c/postgres          +
            |          |          |             |             | postgres=CTc/postgres
  template1 | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 | =c/postgres          +
@@ -213,14 +213,14 @@ postgres=# create database test template=template1;
 ```
 postgres=# \l
                                      数据库列表
-   名称    |  拥有者  | 字元编码 |  校对规则   |    Ctype    |       存取权限        
+   名称    |  拥有者  | 字元编码 |  校对规则   |    Ctype    |       存取权限
 -----------+----------+----------+-------------+-------------+-----------------------
- postgres  | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 | 
+ postgres  | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 |
  template0 | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 | =c/postgres          +
            |          |          |             |             | postgres=CTc/postgres
  template1 | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 | =c/postgres          +
            |          |          |             |             | postgres=CTc/postgres
- test      | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 | 
+ test      | postgres | UTF8     | zh_CN.UTF-8 | zh_CN.UTF-8 |
 (4 行记录)
 ```
 
@@ -243,7 +243,7 @@ CREATE TABLE
 test=# INSERT INTO test(name, age) VALUES('羊八井', 31), ('杨景', 31);
 INSERT 0 2
 test=# SELECT * FROM test;
- id |  name  | age 
+ id |  name  | age
 ----+--------+-----
   1 | 羊八井 |  31
   2 | 杨景   |  31
@@ -251,7 +251,7 @@ test=# SELECT * FROM test;
 
 
 test=# select pg_is_in_recovery();
- pg_is_in_recovery 
+ pg_is_in_recovery
 -------------------
  f
 (1 行记录)
@@ -278,10 +278,10 @@ usesysid         | 16384
 usename          | pgrepuser
 application_name | walreceiver
 client_addr      | 10.0.32.35
-client_hostname  | 
+client_hostname  |
 client_port      | 42338
 backend_start    | 2019-07-11 10:08:37.842367+08
-backend_xmin     | 
+backend_xmin     |
 state            | streaming
 sent_location    | 0/501EB20
 write_location   | 0/501EB20
@@ -317,7 +317,7 @@ test=# DELETE FROM test WHERE id = 1;
 DELETE 1
 
 test=# SELECT * FROM test;
- id | name | age 
+ id | name | age
 ----+------+-----
   2 | 杨景 |  31
 (1 行记录)

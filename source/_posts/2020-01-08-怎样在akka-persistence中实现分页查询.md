@@ -89,7 +89,7 @@ class ConfigManager private (namespace: String, context: ActorContext[Command]) 
           Effect.reply(replyTo)(response)
       },
       eventHandler)
-  
+
   private def processPageQuery(
       state: ConfigManagerState,
       replyTo: ActorRef[Response],
@@ -152,7 +152,7 @@ class ConfigEntity private (namespace: String, dataId: String, context: ActorCon
   }
 }
 ```
- 
+
 `ConfigManager#processPageQuery` 函数实现了大部分的分页查询逻辑（有部分逻辑需要由 `ConfigEntity` 处理）。
 
 ```scala
@@ -190,7 +190,7 @@ select * from t_config where data_id like '%"in.dataId"%' offset "offset" limit 
 
 ```sql
 select * from t_config where data_id like '%"in.dataId"%' and config_type = "in.configType" offset "offset" limit "in.size"
-``` 
+```
 
 `ConfigEntity` 对 `config_type` 部分的查询逻辑实现如下：
 
@@ -222,4 +222,4 @@ option match {
 
 ## 小结
 
-完整代码可在此 [https://github.com/yangbajing/yangbajing-blog/tree/master/src/main/scala/blog/persistence/config](https://github.com/yangbajing/yangbajing-blog/tree/master/src/main/scala/blog/persistence/config) 找到。
+完整代码可在此 [https://github.com/yangjing/yangjing-site/tree/main/src/main/scala/blog/persistence/config](https://github.com/yangjing/yangjing-site/tree/main/src/main/scala/blog/persistence/config) 找到。

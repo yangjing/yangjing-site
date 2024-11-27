@@ -112,7 +112,7 @@ configs:
   database.user: "postgres"
   database.password: "postgres"
   database.dbname: "postgres"
-  database.server.name: "yangbajing"
+  database.server.name: "yangjing"
   schema.include.list: "public"
   table.include.list: "public.inventory"
   decimal.handling.mode: "string"
@@ -147,21 +147,21 @@ configs:
 key:[eyJpZCI6MX0=], properties:[], content:{
   "before":null,
   "after":{"id":1,"name":"榴莲","price":"21.0000","quantity":"78.0000","status":1,"create_by":1,"create_time":"2024-07-03T15:05:46.244534Z","update_by":null,"update_time":null},
-  "source":{"version":"1.7.2.Final","connector":"postgresql","name":"yangbajing","ts_ms":1720019387942,
+  "source":{"version":"1.7.2.Final","connector":"postgresql","name":"yangjing","ts_ms":1720019387942,
     "snapshot":"true",
     "db":"postgres","sequence":"[null,\"23848312\"]","schema":"public","table":"inventory","txId":515,"lsn":23848312,"xmin":null},
   "op":"r",
   "ts_ms":1720019387945,"transaction":null}
 ----- got message -----
 key:[eyJpZCI6Mn0=], properties:[], content:{"before":null,"after":{"id":2,"name":"黄桃","price":"12.5000","quantity":"202.0000","status":1,"create_by":1,"create_time":"2024-07-03T15:05:46.244534Z","update_by":null,"update_time":null},
-  "source":{"version":"1.7.2.Final","connector":"postgresql","name":"yangbajing","ts_ms":1720019387948,
+  "source":{"version":"1.7.2.Final","connector":"postgresql","name":"yangjing","ts_ms":1720019387948,
     "snapshot":"true",
     "db":"postgres","sequence":"[null,\"23848312\"]","schema":"public","table":"inventory","txId":515,"lsn":23848312,"xmin":null},
   "op":"r",
   "ts_ms":1720019387948,"transaction":null}
 ----- got message -----
 key:[eyJpZCI6M30=], properties:[], content:{"before":null,"after":{"id":3,"name":"芒果","price":"8.3200","quantity":"13.3200","status":1,"create_by":1,"create_time":"2024-07-03T15:05:46.244534Z","update_by":null,"update_time":null},
-  "source":{"version":"1.7.2.Final","connector":"postgresql","name":"yangbajing","ts_ms":1720019387948,
+  "source":{"version":"1.7.2.Final","connector":"postgresql","name":"yangjing","ts_ms":1720019387948,
     "snapshot":"last",
     "db":"postgres","sequence":"[null,\"23848312\"]","schema":"public","table":"inventory","txId":515,"lsn":23848312,"xmin":null},
   "op":"r",
@@ -181,13 +181,13 @@ delete from inventory where id = 1;
 
 ```shell
 ----- got message -----
-key:[eyJpZCI6Mn0=], properties:[], content:{"before":{"id":2,"name":"黄桃","price":"12.5000","quantity":"202.0000","status":1,"create_by":1,"create_time":"2024-07-03T13:15:56.757356Z","update_by":5,"update_time":"2024-07-03T13:16:10.938649Z"},"after":{"id":2,"name":"黄桃","price":"12.5000","quantity":"202.0000","status":1,"create_by":1,"create_time":"2024-07-03T13:15:56.757356Z","update_by":5,"update_time":"2024-07-03T13:17:11.847856Z"},"source":{"version":"1.7.2.Final","connector":"postgresql","name":"yangbajing","ts_ms":1720012631848,"snapshot":"false","db":"postgres","sequence":"[\"23685152\",\"23692648\"]","schema":"public","table":"inventory","txId":507,"lsn":23692648,"xmin":null},"op":"u","ts_ms":1720012632359,"transaction":null}
-2024-07-03T21:17:28,363+0800 [pulsar-timer-6-1] INFO  org.apache.pulsar.client.impl.ConsumerStatsRecorderImpl - [persistent://public/default/yangbajing.public.inventory] [sub-inventory] [18db1] Prefetched messages: 0 --- Consume throughput received: 0.02 msgs/s --- 0.00 Mbit/s --- Ack sent rate: 0.02 ack/s --- Failed messages: 0 --- batch messages: 0 ---Failed acks: 0
+key:[eyJpZCI6Mn0=], properties:[], content:{"before":{"id":2,"name":"黄桃","price":"12.5000","quantity":"202.0000","status":1,"create_by":1,"create_time":"2024-07-03T13:15:56.757356Z","update_by":5,"update_time":"2024-07-03T13:16:10.938649Z"},"after":{"id":2,"name":"黄桃","price":"12.5000","quantity":"202.0000","status":1,"create_by":1,"create_time":"2024-07-03T13:15:56.757356Z","update_by":5,"update_time":"2024-07-03T13:17:11.847856Z"},"source":{"version":"1.7.2.Final","connector":"postgresql","name":"yangjing","ts_ms":1720012631848,"snapshot":"false","db":"postgres","sequence":"[\"23685152\",\"23692648\"]","schema":"public","table":"inventory","txId":507,"lsn":23692648,"xmin":null},"op":"u","ts_ms":1720012632359,"transaction":null}
+2024-07-03T21:17:28,363+0800 [pulsar-timer-6-1] INFO  org.apache.pulsar.client.impl.ConsumerStatsRecorderImpl - [persistent://public/default/yangjing.public.inventory] [sub-inventory] [18db1] Prefetched messages: 0 --- Consume throughput received: 0.02 msgs/s --- 0.00 Mbit/s --- Ack sent rate: 0.02 ack/s --- Failed messages: 0 --- batch messages: 0 ---Failed acks: 0
 ----- got message -----
-key:[eyJpZCI6M30=], properties:[], content:{"before":null,"after":{"id":3,"name":"芒果","price":"8.3200","quantity":"13.3200","status":1,"create_by":1,"create_time":"2024-07-03T13:18:27.223533Z","update_by":null,"update_time":null},"source":{"version":"1.7.2.Final","connector":"postgresql","name":"yangbajing","ts_ms":1720012707224,"snapshot":"false","db":"postgres","sequence":"[\"23692896\",\"23692952\"]","schema":"public","table":"inventory","txId":508,"lsn":23692952,"xmin":null},"op":"c","ts_ms":1720012707403,"transaction":null}
-2024-07-03T21:18:28,366+0800 [pulsar-timer-6-1] INFO  org.apache.pulsar.client.impl.ConsumerStatsRecorderImpl - [persistent://public/default/yangbajing.public.inventory] [sub-inventory] [18db1] Prefetched messages: 0 --- Consume throughput received: 0.02 msgs/s --- 0.00 Mbit/s --- Ack sent rate: 0.02 ack/s --- Failed messages: 0 --- batch messages: 0 ---Failed acks: 0
+key:[eyJpZCI6M30=], properties:[], content:{"before":null,"after":{"id":3,"name":"芒果","price":"8.3200","quantity":"13.3200","status":1,"create_by":1,"create_time":"2024-07-03T13:18:27.223533Z","update_by":null,"update_time":null},"source":{"version":"1.7.2.Final","connector":"postgresql","name":"yangjing","ts_ms":1720012707224,"snapshot":"false","db":"postgres","sequence":"[\"23692896\",\"23692952\"]","schema":"public","table":"inventory","txId":508,"lsn":23692952,"xmin":null},"op":"c","ts_ms":1720012707403,"transaction":null}
+2024-07-03T21:18:28,366+0800 [pulsar-timer-6-1] INFO  org.apache.pulsar.client.impl.ConsumerStatsRecorderImpl - [persistent://public/default/yangjing.public.inventory] [sub-inventory] [18db1] Prefetched messages: 0 --- Consume throughput received: 0.02 msgs/s --- 0.00 Mbit/s --- Ack sent rate: 0.02 ack/s --- Failed messages: 0 --- batch messages: 0 ---Failed acks: 0
 ----- got message -----
-key:[eyJpZCI6MX0=], properties:[], content:{"before":{"id":1,"name":"榴莲","price":"21.0000","quantity":"78.0000","status":1,"create_by":1,"create_time":"2024-07-03T13:15:56.757356Z","update_by":null,"update_time":null},"after":null,"source":{"version":"1.7.2.Final","connector":"postgresql","name":"yangbajing","ts_ms":1720012724177,"snapshot":"false","db":"postgres","sequence":"[\"23693184\",\"23693240\"]","schema":"public","table":"inventory","txId":509,"lsn":23693240,"xmin":null},"op":"d","ts_ms":1720012724249,"transaction":null}
+key:[eyJpZCI6MX0=], properties:[], content:{"before":{"id":1,"name":"榴莲","price":"21.0000","quantity":"78.0000","status":1,"create_by":1,"create_time":"2024-07-03T13:15:56.757356Z","update_by":null,"update_time":null},"after":null,"source":{"version":"1.7.2.Final","connector":"postgresql","name":"yangjing","ts_ms":1720012724177,"snapshot":"false","db":"postgres","sequence":"[\"23693184\",\"23693240\"]","schema":"public","table":"inventory","txId":509,"lsn":23693240,"xmin":null},"op":"d","ts_ms":1720012724249,"transaction":null}
 ```
 
 #### Topic 命名规则
@@ -254,6 +254,6 @@ key:[eyJpZCI6MX0=], properties:[], content:{"before":{"id":1,"name":"榴莲","pr
 
 Pulsar CDC 除可用于对多个业务数据库的数据进行“实时”采集外，也可以用于“事件消息表”的实现。通过事件消息表，可以确保数据库事务和 MQ 发送事务保持一致，而且在一定程度上也可以简化业务程序员的开发复杂度。另文将对基于 Pulsar CDC 和 PostgreSQL 实现事件消息表进行较为详细的介绍。
 
-本文完整示例脚本见：[https://github.com/yangbajing/yangbajing-blog/tree/main/examples/pulsar-cdc](https://github.com/yangbajing/yangbajing-blog/tree/main/examples/pulsar-cdc) 。
+本文完整示例脚本见：[https://github.com/yangjing/yangjing-site/tree/main/examples/pulsar-cdc](https://github.com/yangjing/yangjing-site/tree/main/examples/pulsar-cdc) 。
 
 注：本文操作也适配 Pulsar 3.0 LTS 及 PostgreSQL 更高版本，当有差异时我将另文更新差异说明。

@@ -237,7 +237,7 @@ fn default_sort_bys() -> Vec<SortBy> {
 }
 ```
 
-*完整代码见： [https://github.com/yangbajing/ultimate-common/blob/main/crates/ultimate-api/src/v1/page.rs](https://github.com/yangbajing/ultimate-common/blob/main/crates/ultimate-api/src/v1/page.rs)*
+*完整代码见： [https://github.com/yangjing/ultimate-common/blob/main/crates/ultimate-api/src/v1/page.rs](https://github.com/yangjing/ultimate-common/blob/main/crates/ultimate-api/src/v1/page.rs)*
 
 在 `struct` 的 `derive` 上添加 `Clone, PartialEq, ::prost::Message` 以支持 protobuf 二进制序列化。其它的宏可以根据项目需要自行添加。在 `build.rs` 里配置 `.extern_path(".ultimate_api", "::ultimate_api");` 后，`tonic-build` 就不会生成相应的 Rust 类型，而是直接使用已存在的 `::ultimate_api` 路径开头的类型。
 

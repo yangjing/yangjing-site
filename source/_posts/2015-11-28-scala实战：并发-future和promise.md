@@ -1,6 +1,6 @@
 title: Scala实战：并发-Future和Promise
 date: 2015-11-28 15:23:32
-categories: 
+categories:
 - scala
 - scala实战
 tags:
@@ -36,7 +36,7 @@ val theFuture = Future { computation() }
 
 - def onSuccess[U](pf: PartialFunction[T, U]): 传入一个偏函数，可以使用模式匹配来处理你想要的结果
 - def onFailure[U](pf: PartialFunction[Throwable, U]): 传入一个偏函数，可以使用模式匹配来处理你想要的异常
-- def onComplete[U](f: Try[T] => U): 传一个接受`Try[T]`（[http://www.yangbajing.me/2013/02/16/Option-Either-Try/](http://www.yangbajing.me/2013/02/16/Option-Either-Try/)）类型的函数。
+- def onComplete[U](f: Try[T] => U): 传一个接受`Try[T]`（[http://www.yangjing.me/2013/02/16/Option-Either-Try/](http://www.yangjing.me/2013/02/16/Option-Either-Try/)）类型的函数。
 
 上面3个回调函数都要求返回一个类型为`U`的返回值，这也得益于Scala的类型自动推导功能，你可以减少很多的样版代码。
 
@@ -53,7 +53,7 @@ theFuture.onComplate {
 
 ## 合并多个Future的结果
 
-实际工作中，我们经常遇到需要向多个来源同时异步请求数据的时候。这时我们就需要等所以来源数据都返回后将结果集处理后再返回。使用`Future.sequence`方法，接收一个包含`Future`的列表来将一系列Future的结果汇总到一个`List`单一结果里输出。完整代码在：[http://git.oschina.net/yangbajing/codes/08pacy2lubgqnkmv1xojd](http://git.oschina.net/yangbajing/codes/08pacy2lubgqnkmv1xojd)
+实际工作中，我们经常遇到需要向多个来源同时异步请求数据的时候。这时我们就需要等所以来源数据都返回后将结果集处理后再返回。使用`Future.sequence`方法，接收一个包含`Future`的列表来将一系列Future的结果汇总到一个`List`单一结果里输出。完整代码在：[http://git.oschina.net/yangjing/codes/08pacy2lubgqnkmv1xojd](http://git.oschina.net/yangjing/codes/08pacy2lubgqnkmv1xojd)
 
 ```scala
     val f1 = Future {

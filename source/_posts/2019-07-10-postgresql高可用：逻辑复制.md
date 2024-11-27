@@ -10,8 +10,8 @@ tags:
   - wal
 ---
 
-1. [《PostgreSQL从入门到不后悔》](https://www.yangbajing.me/2018/02/05/postgresql%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8D%E5%90%8E%E6%82%94/)
-2. [《PostgreSQL高可用：逻辑复制》](https://www.yangbajing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/)
+1. [《PostgreSQL从入门到不后悔》](https://www.yangjing.me/2018/02/05/postgresql%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8D%E5%90%8E%E6%82%94/)
+2. [《PostgreSQL高可用：逻辑复制》](https://www.yangjing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/)
 3. [《PostgreSQL高可用 - PG 11集群》](http://localhost:4000/2019/07/12/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8-PG11%E9%9B%86%E7%BE%A4/)
 
 从PostgreSQL 10（以下简称PG）开始，PG支持逻辑复制能力，可实现仅复制部分表或PG服务器上的部分database。逻辑复制的一大优点是支持跨版本间复制，也不需要主从节点的操作系统和硬件架构相同。例如，我们可以实现一台Linux服务器上的PG 11和Windows服务器上的PG 10之间的复制；通过逻辑复制还可以实现不停服的数据库版本更新。
@@ -92,7 +92,7 @@ CREATE SUBSCRIPTION
 watch_log=> \conninfo
 以用户 "devuser" 的身份, 在主机"10.0.32.37", 端口"5432"连接到数据库 "watch_log"
 watch_log=> select * from l_basic ;
- imei | i | p | s | o | u 
+ imei | i | p | s | o | u
 ------+---+---+---+---+---
 (0 行记录)
 ```
@@ -102,7 +102,7 @@ watch_log=> select * from l_basic ;
 watch_log=> \conninfo
 以用户 "devuser" 的身份, 在主机"10.0.32.36", 端口"5432"连接到数据库 "watch_log"
 watch_log=> select * from l_basic ;
- imei | i | p | s | o | u 
+ imei | i | p | s | o | u
 ------+---+---+---+---+---
 (0 行记录)
 ```

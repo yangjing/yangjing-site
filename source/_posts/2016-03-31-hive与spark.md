@@ -10,7 +10,7 @@ tags:
 - spark sql
 ---
 
-- Spark与Hadoop安装见此：[安装Spark1.5与Hadoop2.6](http://www.yangbajing.me/2016/02/27/%E5%AE%89%E8%A3%85spark1-5-2%E4%B8%8Ehadoop2-6-2/)
+- Spark与Hadoop安装见此：[安装Spark1.5与Hadoop2.6](http://www.yangjing.me/2016/02/27/%E5%AE%89%E8%A3%85spark1-5-2%E4%B8%8Ehadoop2-6-2/)
 
 **注意：Spark官方提供的二进制发行版是不支持hive的，需要自行编译。**
 

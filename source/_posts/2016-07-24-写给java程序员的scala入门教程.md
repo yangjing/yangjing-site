@@ -7,9 +7,9 @@ tags:
 - 入门
 ---
 
-*（原文链接：[http://www.yangbajing.me/2016/07/24/写给java程序员的scala入门教程/](http://www.yangbajing.me/2016/07/24/%E5%86%99%E7%BB%99java%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84scala%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/)，转载请注明）*
+*（原文链接：[http://www.yangjing.me/2016/07/24/写给java程序员的scala入门教程/](http://www.yangjing.me/2016/07/24/%E5%86%99%E7%BB%99java%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84scala%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/)，转载请注明）*
 
-之前因为Spark的引入，写了一篇[《写给Python程序员的Scala入门教程》](http://www.yangbajing.me/2015/11/28/%E5%86%99%E7%BB%99python%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84scala%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/)。那篇文章简单对比了Scala与Python的异同，并介绍了一些Scala的常用编程技巧。今天这篇文章将面向广大的Java程序员，带领Javaer进入函数式编程的世界。
+之前因为Spark的引入，写了一篇[《写给Python程序员的Scala入门教程》](http://www.yangjing.me/2015/11/28/%E5%86%99%E7%BB%99python%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84scala%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/)。那篇文章简单对比了Scala与Python的异同，并介绍了一些Scala的常用编程技巧。今天这篇文章将面向广大的Java程序员，带领Javaer进入函数式编程的世界。
 
 Java 8拥有了一些初步的函数式编程能力：闭包等，还有新的并发编程模型及Stream这个带高阶函数和延迟计算的数据集合。在尝试了Java 8以后，也许会觉得意犹未尽。是的，你会发现Scala能满足你在初步尝试函数式编程后那求知的欲望。
 
@@ -131,7 +131,7 @@ f: String = 假
 scala> val unit = if (false) "真"
 unit: Any = ()
 
-scala> val unit2 = if (true) "真" 
+scala> val unit2 = if (true) "真"
 unit2: Any = 真
 ```
 
@@ -326,7 +326,7 @@ tuple2: (String, String) = (杨,景)
 `Set`是一个不重复且无序的集合，初始化一个`Set`需要使用`Set`对象：
 
 ```scala
-scala> val set = Set("Scala", "Java", "C++", "Javascript", "C#", "Python", "PHP") 
+scala> val set = Set("Scala", "Java", "C++", "Javascript", "C#", "Python", "PHP")
 set: scala.collection.immutable.Set[String] = Set(Scala, C#, Python, Javascript, PHP, C++, Java)
 
 scala> set + "Go"
@@ -545,7 +545,7 @@ val allLine = using(Files.newBufferedReader(Paths.get("/etc/hosts"))) { reader =
       readAll(buffer, reader.readLine())
     }
   }
-  
+
   readAll(new StringBuilder(), reader.readLine())
 }
 

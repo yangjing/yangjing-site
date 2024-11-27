@@ -1,6 +1,6 @@
 title: Cassandra升级更新
 date: 2016-03-07 11:52:36
-categories: 
+categories:
 - bigdata
 - cassandra
 tags:
@@ -10,7 +10,7 @@ tags:
 
 今天需要把集群安装的 cassandra 2.2.4 升级到 cassandra 2.2.5 ，这里记录下升级步骤。
 
-*（升级脚本见：[https://gist.github.com/yangbajing/12461fcab190689f2499](https://gist.github.com/yangbajing/12461fcab190689f2499)）*
+*（升级脚本见：[https://gist.github.com/yangjing/12461fcab190689f2499](https://gist.github.com/yangjing/12461fcab190689f2499)）*
 
 ## 升级的主意事项和限制条件
 

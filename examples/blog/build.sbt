@@ -1,6 +1,6 @@
-name := "yangbajing-blog"
+name := "yangjing-site"
 
-homepage := Some(url("https://www.yangbajing.me"))
+homepage := Some(url("https://www.yangjing.me"))
 
 startYear := Some(2019)
 

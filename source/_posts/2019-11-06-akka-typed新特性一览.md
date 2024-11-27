@@ -203,7 +203,7 @@ object ComplexActor {
     .map { listing =>
       if (listing.isForKey(serviceKey))
         listing.serviceInstances(serviceKey).head
-      else 
+      else
         throw new IllegalAccessException(s"Actor reference not found: $serviceKey")
     }
 ```
@@ -251,7 +251,7 @@ val spawnActor: ActorRef[SpawnProtocol.Command] = system.toClassic
       .onFailure(SupervisorStrategy.resume)), "spawn")
   .toTyped[SpawnProtocol.Command]
 
-val helloScalaF: Future[ActorRef[HelloScala.Command]] = 
+val helloScalaF: Future[ActorRef[HelloScala.Command]] =
   spawnActor.ask[ActorRef[HelloScala.Command]](replyTo =>
     SpawnProtocol.Spawn(HelloScala(), "sample", Props.empty, replyTo))
 
@@ -266,5 +266,5 @@ val helloScala: ActorRef[HelloScala.Command] = Await.result(helloScalaF, 2.secon
 
 **完整示例代码**
 
-- [https://github.com/yangbajing/scala-web-development/blob/master/book/src/test/scala/book/typed/HelloScala.scala](https://github.com/yangbajing/scala-web-development/blob/master/book/src/test/scala/book/typed/HelloScala.scala)
-- [https://github.com/yangbajing/scala-web-development/blob/master/book/src/test/scala/book/typed/ComplexActor.scala](https://github.com/yangbajing/scala-web-development/blob/master/book/src/test/scala/book/typed/ComplexActor.scala)
+- [https://github.com/yangjing/scala-web-development/blob/master/book/src/test/scala/book/typed/HelloScala.scala](https://github.com/yangjing/scala-web-development/blob/master/book/src/test/scala/book/typed/HelloScala.scala)
+- [https://github.com/yangjing/scala-web-development/blob/master/book/src/test/scala/book/typed/ComplexActor.scala](https://github.com/yangjing/scala-web-development/blob/master/book/src/test/scala/book/typed/ComplexActor.scala)

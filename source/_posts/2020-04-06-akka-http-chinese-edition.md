@@ -12,11 +12,11 @@ tags:
 
 Akka HTTP 10.1.11 非官文中文翻译在线阅读地址：
 
-- 中文文档：[Akka HTTP Unofficial Chinese](https://www.yangbajing.me/akka-http/)
-- 码云镜像：[Akka HTTP Unofficial Chinese](https://yangbajing.gitee.io/akka-http/)
+- 中文文档：[Akka HTTP Unofficial Chinese](https://www.yangjing.me/akka-http/)
+- 码云镜像：[Akka HTTP Unofficial Chinese](https://yangjing.gitee.io/akka-http/)
 
 
-翻译难免有错误或表达不够清楚的地方。因此，Akka HTTP 中文版翻译采用了基于原始 Paradox 的 md 文件对照翻译的形式，英文原文将显示在中文译文的上方。翻译的源码内容可以在 https://github.com/yangbajing/akka-http 仓库的 docs-zh 子项目找到。
+翻译难免有错误或表达不够清楚的地方。因此，Akka HTTP 中文版翻译采用了基于原始 Paradox 的 md 文件对照翻译的形式，英文原文将显示在中文译文的上方。翻译的源码内容可以在 https://github.com/yangjing/akka-http 仓库的 docs-zh 子项目找到。
 
 欢迎大家指出或改进不好的地方，一起完善并在未来跟进官方版本的更新。欢迎随时编辑并提交 Pull Request。
 

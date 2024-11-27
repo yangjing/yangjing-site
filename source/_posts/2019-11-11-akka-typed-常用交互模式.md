@@ -10,7 +10,7 @@ tags:
   - design-pattern
 ---
 
-本文将探讨Akka Typed下actor的常用交互模式，相对经典的untyped actor，typed actor在交互与使用方式上有着显著的区别。对Akka Typed还不太了解的读者可以先参阅我的上一篇文章：[《Akka Typed新特性一览》](https://www.yangbajing.me/2019/11/06/akka-typed%E6%96%B0%E7%89%B9%E6%80%A7%E4%B8%80%E8%A7%88/)。
+本文将探讨Akka Typed下actor的常用交互模式，相对经典的untyped actor，typed actor在交互与使用方式上有着显著的区别。对Akka Typed还不太了解的读者可以先参阅我的上一篇文章：[《Akka Typed新特性一览》](https://www.yangjing.me/2019/11/06/akka-typed%E6%96%B0%E7%89%B9%E6%80%A7%E4%B8%80%E8%A7%88/)。
 
 *本文大量参译了Akka官方文档《Interaction Patterns》一文（原文链接：[https://doc.akka.io/docs/akka/current/typed/interaction-patterns.html](https://doc.akka.io/docs/akka/current/typed/interaction-patterns.html)）。在巨人的基础之上加入了作者自身的理解和解读，希望能给读者带来 1+1>=2 的感受。*
 
@@ -84,7 +84,7 @@ Behaviors.receiveMessage[Request] {
   final private case class WrappedBackendResponse(response: Backend.Response) extends Command
 
   Behaviors.setup[Command] { context =>
-    val backendAdapter: ActorRef[Backend.Response] = 
+    val backendAdapter: ActorRef[Backend.Response] =
       context.messageAdapter(resp => WrappedBackendResponse(resp))
 
     backend ! Backend.Register(backendAdapter)
@@ -134,8 +134,8 @@ Behaviors.receiveMessage[Request] {
 
   trait Command
   final private case class WrappedQueryResponse(
-    reqId: String, 
-    response: Try[Hal.Response], 
+    reqId: String,
+    response: Try[Hal.Response],
     replyTo: ActorRef[Hal.Response]) extends Command
 
   Behaviors.setup[Command] { context =>
@@ -194,7 +194,7 @@ import akka.actor.typed.scaladsl.AskPattern._
 implicit val typedSystem: ActorSystem[_] = system
 implicit val timeout: Timeout = 3.seconds
 
-val result: Future[CookieFabric.Reply] = 
+val result: Future[CookieFabric.Reply] =
   cookieFabric.ask(ref => CookieFabric.GiveMeCookies(3, ref))
 ```
 

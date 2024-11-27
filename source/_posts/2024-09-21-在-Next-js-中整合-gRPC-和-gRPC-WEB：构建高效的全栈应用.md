@@ -57,7 +57,7 @@ pnpm add -D grpc-tools ts-proto
 
 `nice-grpc` 使用 `protobufjs` 和 `long` 库来处理 protobuf 编码和解码，`long` 库用于处理大整数。`grpc-tools` 和 `ts-proto` 用于生成 protobuf/gRPC 存根的 TypeScript 代码，所以使用 `-D` 参数添加到开发依赖。
 
-继续使用之前 [`tonic-getting`](https://github.com/yangbajing/grpc-microservices-with-rust/tree/main/tonic-getting) 项目中的 `proto` 文件，复制 `tonic-getting` 项目的 `proto` 目录到 `nextjs-getting` 项目根目录中。然后创建 `generate-proto.sh` 脚本以编译并生成 TypeScript 代码，内容如下：
+继续使用之前 [`tonic-getting`](https://github.com/yangjing/grpc-microservices-with-rust/tree/main/tonic-getting) 项目中的 `proto` 文件，复制 `tonic-getting` 项目的 `proto` 目录到 `nextjs-getting` 项目根目录中。然后创建 `generate-proto.sh` 脚本以编译并生成 TypeScript 代码，内容如下：
 
 ```sh
 PROTO_DIR="./proto"
@@ -84,7 +84,7 @@ protoc \
 
 ### 创建 gRPC 客户端
 
-创建 gRPC 客户端前，先启动后端服务（代码见：[tonic-getting](https://github.com/yangbajing/grpc-microservices-with-rust/tree/main/tonic-getting)）。使用 `RUST_LOG="tower_http=debug" cargo run` 启动 `tonic-getting` 项目中的后端服务。
+创建 gRPC 客户端前，先启动后端服务（代码见：[tonic-getting](https://github.com/yangjing/grpc-microservices-with-rust/tree/main/tonic-getting)）。使用 `RUST_LOG="tower_http=debug" cargo run` 启动 `tonic-getting` 项目中的后端服务。
 
 #### src/lib/grpc.ts
 
@@ -164,7 +164,7 @@ export default function Signin() {
 }
 ```
 
-*使用了 shadcn UI 库，完整代码见：[yangbajing/grpc-microservices-with-rust/blob/main/nextjs-getting/src/app/signin/page.tsx](https://github.com/yangbajing/grpc-microservices-with-rust/blob/main/nextjs-getting/src/app/signin/page.tsx)*
+*使用了 shadcn UI 库，完整代码见：[yangjing/grpc-microservices-with-rust/blob/main/nextjs-getting/src/app/signin/page.tsx](https://github.com/yangjing/grpc-microservices-with-rust/blob/main/nextjs-getting/src/app/signin/page.tsx)*
 
 ![Signin Page](./imgs/signin-page.png)
 
@@ -265,5 +265,5 @@ BFF 模式结合 Next.js 等现代框架，代表了 Web 开发的一个重要�
 
 本文涉及源码可以在以下地址获取：
 
-- Next.js 项目：[https://github.com/yangbajing/grpc-microservices-with-rust/tree/main/nextjs-getting](https://github.com/yangbajing/grpc-microservices-with-rust/tree/main/nextjs-getting)
-- gRPC 服务：[https://github.com/yangbajing/grpc-microservices-with-rust/tree/main/tonic-getting](https://github.com/yangbajing/grpc-microservices-with-rust/tree/main/tonic-getting)
+- Next.js 项目：[https://github.com/yangjing/grpc-microservices-with-rust/tree/main/nextjs-getting](https://github.com/yangjing/grpc-microservices-with-rust/tree/main/nextjs-getting)
+- gRPC 服务：[https://github.com/yangjing/grpc-microservices-with-rust/tree/main/tonic-getting](https://github.com/yangjing/grpc-microservices-with-rust/tree/main/tonic-getting)

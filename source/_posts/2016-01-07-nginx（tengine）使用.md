@@ -64,8 +64,8 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 **错误日志**
 
 ```
-2016/01/07 13:15:48 [error] 2874#0: check time out with peer: 10.51.xx.xx:7100 
-2016/01/07 13:15:53 [error] 2874#0: check time out with peer: 10.51.xx.xx:7100 
+2016/01/07 13:15:48 [error] 2874#0: check time out with peer: 10.51.xx.xx:7100
+2016/01/07 13:15:53 [error] 2874#0: check time out with peer: 10.51.xx.xx:7100
 ```
 
 错误日志显示Nginx运行或启动时的一此错误情况，示例是做负载均衡时检测节点健康状态失败时的错误消息。
@@ -95,7 +95,7 @@ location / {
 
 ## 负载均衡与健康检查（Tengine）
 
-（注：之前写了一篇介绍 Nginx 官方的健康检查方案文章：[Nginx负载均衡与反向代理](http://www.yangbajing.me/2015/11/20/nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/)）
+（注：之前写了一篇介绍 Nginx 官方的健康检查方案文章：[Nginx负载均衡与反向代理](http://www.yangjing.me/2015/11/20/nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/)）
 
 因为Nginx官方的健康检查是一个收费方案，所以这里的设置是基于 **Tengine** 提供的方案。先给出配置，再细说各指令的
 

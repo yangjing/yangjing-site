@@ -35,13 +35,13 @@ pwgen -Bs 10 1 > password
 
 ### 服务器配置
 
-你将需要一个分配了DNS主机名的服务器来验证主机名。在这个例子中，我们假设主机名是`yangbajing.dev`。
+你将需要一个分配了DNS主机名的服务器来验证主机名。在这个例子中，我们假设主机名是`yangjing.dev`。
 
 ### 创建自签名证书
 
 #### 生成服务端SSL证书
 
-第一步是创建将对`yangbajing.me`证书进行签名的证书颁发机构。根CA证书有几个附加属性（`ca:true`，`keyCertSign`），这些属性明确地将其标记为CA证书，并将保存在信任存储中。
+第一步是创建将对`yangjing.me`证书进行签名的证书颁发机构。根CA证书有几个附加属性（`ca:true`，`keyCertSign`），这些属性明确地将其标记为CA证书，并将保存在信任存储中。
 
 ```bash
 #!/bin/sh
@@ -52,12 +52,12 @@ KEY_FILE=ssl-key
 
 # 创建自签名密钥CA证书和私钥
 keytool -genkeypair -v \
-  -dname "CN=www.yangbajing.me, OU=Yangbajing, O=Yangbajing, L=Beijing, ST=Beijing, C=CN" \
+  -dname "CN=www.yangjing.me, OU=Yangbajing, O=Yangbajing, L=Beijing, ST=Beijing, C=CN" \
   -keyalg RSA \
   -keysize 4096 \
   -ext KeyUsage:critical="keyCertSign" \
   -ext BasicConstraints:critical="ca:true" \
-  -ext SAN="DNS:www.yangbajing.me,DNS:yangbajing.me,DNS:about.yangbajing.me" \
+  -ext SAN="DNS:www.yangjing.me,DNS:yangjing.me,DNS:about.yangjing.me" \
   -validity 9999 \
   -alias ${KEY_FILE} \
   -keystore ${KEY_FILE}.jks \
@@ -77,7 +77,7 @@ keytool -export -v \
   -rfc
 ```
 
-## 生成 yangbajing.dev 证书
+## 生成 yangjing.dev 证书
 
 ### SSL证书配置
 
@@ -87,7 +87,7 @@ keytool -export -v \
 
 LANG=en_US.UTF-8
 export PW=`cat password`
-export DOMAIN="yangbajing.dev"
+export DOMAIN="yangjing.dev"
 export KEY_FILE=ssl-key
 
 # 创建绑定到 ${DOMAIN} 的服务器证书
@@ -146,10 +146,10 @@ keytool -import -v \
   -storepass:env PW
 ```
 
-可以列出`yangbajing.jks`的内容以确认。若使用`Play`（等Java应用），这将存储到服务器的密钥存储区。
+可以列出`yangjing.jks`的内容以确认。若使用`Play`（等Java应用），这将存储到服务器的密钥存储区。
 
 ```
-keytool -list -v -keystore yangbajing.jks -storepass:env PW
+keytool -list -v -keystore yangjing.jks -storepass:env PW
 ```
 
 将可看到类似如下输出：
@@ -159,19 +159,19 @@ Keystore provider: SUN
 
 Your keystore contains 1 entry
 
-Alias name: yangbajing.dev
+Alias name: yangjing.dev
 Creation date: Jun 18, 2019
 Entry type: PrivateKeyEntry
 Certificate chain length: 1
 Certificate[1]:
-Owner: CN=yangbajing.dev, OU=Yangbajing, O=Yangbajing, L=Beijing, ST=Beijing, C=CN
-Issuer: CN=yangbajing.dev, OU=Yangbajing, O=Yangbajing, L=Beijing, ST=Beijing, C=CN
+Owner: CN=yangjing.dev, OU=Yangbajing, O=Yangbajing, L=Beijing, ST=Beijing, C=CN
+Issuer: CN=yangjing.dev, OU=Yangbajing, O=Yangbajing, L=Beijing, ST=Beijing, C=CN
 ....
 ```
 
 ## 导出Nginx可用的PEM
 
-如果 yangbajing.me 不使用Java作为TLS端点，同时你想使用Nginx。可需要导出 **PEM** 格式的证书。这需要 `openssl` 来导出私钥。
+如果 yangjing.me 不使用Java作为TLS端点，同时你想使用Nginx。可需要导出 **PEM** 格式的证书。这需要 `openssl` 来导出私钥。
 
 ```bash
 #!/bin/sh
@@ -212,11 +212,11 @@ openssl pkcs12 \
 rm ${DOMAIN}.p12
 ```
 
-生成的 `yangbajing.dev.crt`（公钥）和 `yangbajing.dev.key`（私钥）两个文件。作为示例，可以这样配置Nginx使用。
+生成的 `yangjing.dev.crt`（公钥）和 `yangjing.dev.key`（私钥）两个文件。作为示例，可以这样配置Nginx使用。
 
 ```
-ssl_certificate      /etc/nginx/certs/yangbajing.dev.crt;
-ssl_certificate_key  /etc/nginx/certs/yangbajing.dev.key;
+ssl_certificate      /etc/nginx/certs/yangjing.dev.crt;
+ssl_certificate_key  /etc/nginx/certs/yangjing.dev.key;
 ```
 
 如果使用的是客户端身份验证，还需要添加：
@@ -225,10 +225,10 @@ ssl_client_certificate /etc/nginx/certs/clientca.crt;
 ssl_verify_client on;
 ```
 
-可以通过如下命令来检查服务器的证书（需要先启动 yangbajing.dev HTTP服务器）：
+可以通过如下命令来检查服务器的证书（需要先启动 yangjing.dev HTTP服务器）：
 
 ```
-keytool -printcert -sslserver yangbajing.dev
+keytool -printcert -sslserver yangjing.dev
 ```
 
 ## HTTP 2

@@ -1,15 +1,15 @@
 title: PostgreSQL从入门到不后悔
 date: 2018-02-05 18:59:08
-categories: 
+categories:
 - bigdata
 - postgresql
 tags:
 - postgresql
 ---
 
-1. [《PostgreSQL从入门到不后悔》](https://www.yangbajing.me/2018/02/05/postgresql%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8D%E5%90%8E%E6%82%94/)
-2. [《PostgreSQL高可用：逻辑复制》](https://www.yangbajing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/)
-3. [《PostgreSQL高可用 - PG 11集群》](https://www.yangbajing.me/2019/07/12/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8-PG11%E9%9B%86%E7%BE%A4/)
+1. [《PostgreSQL从入门到不后悔》](https://www.yangjing.me/2018/02/05/postgresql%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8D%E5%90%8E%E6%82%94/)
+2. [《PostgreSQL高可用：逻辑复制》](https://www.yangjing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/)
+3. [《PostgreSQL高可用 - PG 11集群》](https://www.yangjing.me/2019/07/12/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8-PG11%E9%9B%86%E7%BE%A4/)
 
 ## 安装 PostgreSQL 10
 
@@ -64,14 +64,14 @@ sleep 5
 $PGHOME/bin/psql -h localhost -U postgres -d postgres -f pg_init.sql
 ```
 
-`install_pg.sh` 脚本安装时依赖文件的完整版压缩包在此下载：<a href="https://yangbajing.me/files/postgresql10-scripts.tar.gz" target="_blank">https://yangbajing.me/files/postgresql10-scripts.tar.gz</a>
+`install_pg.sh` 脚本安装时依赖文件的完整版压缩包在此下载：<a href="https://yangjing.me/files/postgresql10-scripts.tar.gz" target="_blank">https://yangjing.me/files/postgresql10-scripts.tar.gz</a>
 
 - **pg-pwfile**：在初始化数据库时设置默认管理员账户的密码
 - **pg_hba.conf**：默认只允许 127.0.0.1/8 访问数据库，这里改成允许所有网段可访问
 - **postgresql.conf**：修改数据库监听地址为 `*` ，监听所有本地网络地址
-- **pg_init.sql**：创建一个普通账户 **yangbajing** 和测试用数据库 **yangbajing** ，密码也设置为 `yangbajing` 
+- **pg_init.sql**：创建一个普通账户 **yangjing** 和测试用数据库 **yangjing** ，密码也设置为 `yangjing`
 
-安装后PG数据库管理管理员账号是 `postgres`，密码为 `postgres`。同时，还创建了一个普通账号：`yangbajing` 和同名数据库 `yangbajing`，密码也是 `yangbajing`。
+安装后PG数据库管理管理员账号是 `postgres`，密码为 `postgres`。同时，还创建了一个普通账号：`yangjing` 和同名数据库 `yangjing`，密码也是 `yangjing`。
 
 将 `/opt/local/pgsql/10.1/bin` 目录加入系统环境变量。
 
@@ -99,17 +99,17 @@ pg_ctl -D /opt/local/var/pgsql/10.1 -l logfile stop
 输入以下命令访问PG数据库：
 
 ```
-psql -h localhost -U yangbajing -d yangbajing -W
+psql -h localhost -U yangjing -d yangjing -W
 ```
 
 根据提示输入密码登录，进入 psql 的 **REPL** 界面。
 
 ```
-Password for user yangbajing: 
+Password for user yangjing:
 psql.bin (10.1)
 Type "help" for help.
 
-yangbajing=>
+yangjing=>
 ```
 
 先建立一些测试表：
@@ -129,28 +129,28 @@ CREATE TABLE t_user (
 );
 INSERT INTO t_role (id, name, created_at) VALUES (1, '超级管理员', now()), (2, '管理员', now()), (3, '用户', now());
 INSERT INTO t_user(name, roles, data, created_at) VALUES
-  ('root', '{1}', '{"email":"root@yangbajing.me"}', now()),
-  ('羊八井', '{2,3}', '{"email":"yangbajing"}', now()),
-  ('哈哈', '{3}', '{"email":"haha@yangbajing.me"}', now());
+  ('root', '{1}', '{"email":"root@yangjing.me"}', now()),
+  ('羊八井', '{2,3}', '{"email":"yangjing"}', now()),
+  ('哈哈', '{3}', '{"email":"haha@yangjing.me"}', now());
 ```
 
 先来执行两个简单的 SELECT 查询：
 
 ```sql
-yangbajing=> select * from t_role;
- id |    name    |          created_at           
+yangjing=> select * from t_role;
+ id |    name    |          created_at
 ----+------------+-------------------------------
   1 | 超级管理员 | 2018-02-01 22:03:17.168906+08
   2 | 管理员     | 2018-02-01 22:03:17.168906+08
   3 | 用户       | 2018-02-01 22:03:17.168906+08
 (3 rows)
 
-yangbajing=> select * from t_user;
- id |  name  | roles |                 data                  |          created_at           
+yangjing=> select * from t_user;
+ id |  name  | roles |                 data                  |          created_at
 ----+--------+-------+---------------------------------------+-------------------------------
-  2 | root   | {1}   | {"email": "root@yangbajing.me"}       | 2018-02-01 22:06:21.140465+08
-  3 | 哈哈   | {3}   | {"email": "haha@yangbajing.me"}       | 2018-02-01 22:06:21.140465+08
-  1 | 羊八井 | {2,3}   | {"email": "yangbajing@yangbajing.me"} | 2018-02-01 22:04:41.580203+08
+  2 | root   | {1}   | {"email": "root@yangjing.me"}       | 2018-02-01 22:06:21.140465+08
+  3 | 哈哈   | {3}   | {"email": "haha@yangjing.me"}       | 2018-02-01 22:06:21.140465+08
+  1 | 羊八井 | {2,3}   | {"email": "yangjing@yangjing.me"} | 2018-02-01 22:04:41.580203+08
 (3 rows)
 ```
 
@@ -174,15 +174,15 @@ ON CONFLICT (id)
 看看表 `t_user` 的结构：
 
 ```
-yangbajing=> \d t_user
+yangjing=> \d t_user
                                        Table "public.t_user"
-   Column   |           Type           | Collation | Nullable |              Default               
+   Column   |           Type           | Collation | Nullable |              Default
 ------------+--------------------------+-----------+----------+------------------------------------
  id         | bigint                   |           | not null | nextval('t_user_id_seq'::regclass)
- name       | character varying(255)   |           | not null | 
- roles      | integer[]                |           | not null | 
- data       | jsonb                    |           |          | 
- created_at | timestamp with time zone |           |          | 
+ name       | character varying(255)   |           | not null |
+ roles      | integer[]                |           | not null |
+ data       | jsonb                    |           |          |
+ created_at | timestamp with time zone |           |          |
 Indexes:
     "t_user_pkey" PRIMARY KEY, btree (id)
 ```
@@ -192,9 +192,9 @@ Indexes:
 *序列：t_user_id_seq*
 
 ```
-yangbajing=> \d t_user_id_seq 
+yangjing=> \d t_user_id_seq
                        Sequence "public.t_user_id_seq"
-  Type  | Start | Minimum |       Maximum       | Increment | Cycles? | Cache 
+  Type  | Start | Minimum |       Maximum       | Increment | Cycles? | Cache
 --------+-------+---------+---------------------+-----------+---------+-------
  bigint |     1 |       1 | 9223372036854775807 |         1 | no      |     1
 Owned by: public.t_user.id
@@ -215,8 +215,8 @@ CREATE SEQUENCE t_user_id2_seq INCREMENT BY 1 MINVALUE 1 START WITH 1;
 **根据索引返回值**
 
 ```sql
-yangbajing=> SELECT id, name, roles[2], created_at FROM t_user;
- id |  name  | roles |          created_at           
+yangjing=> SELECT id, name, roles[2], created_at FROM t_user;
+ id |  name  | roles |          created_at
 ----+--------+-------+-------------------------------
   2 | root   |       | 2018-02-01 22:06:21.140465+08
   3 | 哈哈   |       | 2018-02-01 22:06:21.140465+08
@@ -229,8 +229,8 @@ yangbajing=> SELECT id, name, roles[2], created_at FROM t_user;
 **以行的形式输出数组元素**
 
 ```sql
-yangbajing=> SELECT id, unnest(roles) AS role_id FROM t_user;
- id | role_id 
+yangjing=> SELECT id, unnest(roles) AS role_id FROM t_user;
+ id | role_id
 ----+---------
   2 |       1
   3 |       3
@@ -242,10 +242,10 @@ yangbajing=> SELECT id, unnest(roles) AS role_id FROM t_user;
 **包含查找**
 
 ```sql
-yangbajing=> SELECT * FROM t_user WHERE roles @> ARRAY[1,2];
- id |  name  | roles |                 data                  |          created_at           
+yangjing=> SELECT * FROM t_user WHERE roles @> ARRAY[1,2];
+ id |  name  | roles |                 data                  |          created_at
 ----+--------+-------+---------------------------------------+-------------------------------
-  1 | 羊八井 | {2,1} | {"email": "yangbajing@yangbajing.me"} | 2018-02-01 22:04:41.580203+08
+  1 | 羊八井 | {2,1} | {"email": "yangjing@yangjing.me"} | 2018-02-01 22:04:41.580203+08
 (1 row)
 ```
 
@@ -254,11 +254,11 @@ yangbajing=> SELECT * FROM t_user WHERE roles @> ARRAY[1,2];
 重叠查找和包含查找的不同之处在重叠查找只要匹配数组中的任意一个元素则为 true。
 
 ```sql
-yangbajing=> SELECT * FROM t_user WHERE roles && ARRAY[1,2];
- id |  name  | roles |                 data                  |          created_at           
+yangjing=> SELECT * FROM t_user WHERE roles && ARRAY[1,2];
+ id |  name  | roles |                 data                  |          created_at
 ----+--------+-------+---------------------------------------+-------------------------------
-  2 | root   | {1}   | {"email": "root@yangbajing.me"}       | 2018-02-01 22:06:21.140465+08
-  1 | 羊八井 | {2,1} | {"email": "yangbajing@yangbajing.me"} | 2018-02-01 22:04:41.580203+08
+  2 | root   | {1}   | {"email": "root@yangjing.me"}       | 2018-02-01 22:06:21.140465+08
+  1 | 羊八井 | {2,1} | {"email": "yangjing@yangjing.me"} | 2018-02-01 22:04:41.580203+08
 (2 rows)
 ```
 
@@ -267,8 +267,8 @@ yangbajing=> SELECT * FROM t_user WHERE roles && ARRAY[1,2];
 `array_to_string` 函数的第二个参数指定转换成字符串后使用的分隔字符。
 
 ```sql
-yangbajing=> SELECT id, name, array_to_string(roles, ',') AS role_ids FROM t_user;
- id |  name  | role_ids 
+yangjing=> SELECT id, name, array_to_string(roles, ',') AS role_ids FROM t_user;
+ id |  name  | role_ids
 ----+--------+----------
   2 | root   | 1
   3 | 哈哈   | 3
@@ -287,16 +287,16 @@ TODO
 使用 `random` 函数来排序，并返回第一条记录。
 
 ```sql
-yangbajing=> SELECT * FROM t_user ORDER BY random() LIMIT 1;
- id | name | roles |              data               |          created_at           
+yangjing=> SELECT * FROM t_user ORDER BY random() LIMIT 1;
+ id | name | roles |              data               |          created_at
 ----+------+-------+---------------------------------+-------------------------------
-  3 | 哈哈 | {3}   | {"email": "haha@yangbajing.me"} | 2018-02-01 22:06:21.140465+08
+  3 | 哈哈 | {3}   | {"email": "haha@yangjing.me"} | 2018-02-01 22:06:21.140465+08
 (1 row)
 
-yangbajing=> SELECT * FROM t_user ORDER BY random() LIMIT 1;
- id |  name  | roles |                 data                  |          created_at           
+yangjing=> SELECT * FROM t_user ORDER BY random() LIMIT 1;
+ id |  name  | roles |                 data                  |          created_at
 ----+--------+-------+---------------------------------------+-------------------------------
-  1 | 羊八井 | {2,1} | {"email": "yangbajing@yangbajing.me"} | 2018-02-01 22:04:41.580203+08
+  1 | 羊八井 | {2,1} | {"email": "yangjing@yangjing.me"} | 2018-02-01 22:04:41.580203+08
 (1 row)
 ```
 
@@ -342,22 +342,22 @@ server started
 
 现在，第2个PG数据库已建好，我们分别登录两个数据库。
 
-**使用账号：yangbajing 登录第1个PG**
+**使用账号：yangjing 登录第1个PG**
 
 ```
-$ psql -h localhost -U yangbajing -d yangbajing
-Password for user yangbajing: 
+$ psql -h localhost -U yangjing -d yangjing
+Password for user yangjing:
 psql.bin (10.1)
 Type "help" for help.
 
-yangbajing=> 
+yangjing=>
 ```
 
 **使用账号：postgres 登录第2个PG，并创建测试用户 `pg2` 和测试数据库 `pg2`**
 
 ```
 ]$ psql -h localhost -p 5433 -U postgres -d postgres
-Password for user postgres: 
+Password for user postgres:
 psql.bin (10.1)
 Type "help" for help.
 
@@ -367,7 +367,7 @@ postgres=# create database pg2 owner=pg2 template=template1;
 CREATE DATABASE
 postgres=# \c pg2
 You are now connected to database "pg2" as user "postgres".
-pg2=# 
+pg2=#
 ```
 
 创建 `postgres_fdw` 扩展，以支持使用外部表的形式访问其它数据库。使用 `postgres_fdw` 主要步骤如下：
@@ -389,14 +389,14 @@ CREATE EXTENSION
 *创建外部连接数据库*
 
 ```
-pg2=# CREATE SERVER foreign_server FOREIGN DATA WRAPPER postgres_fdw OPTIONS (host 'localhost', port '5432', dbname 'yangbajing');
+pg2=# CREATE SERVER foreign_server FOREIGN DATA WRAPPER postgres_fdw OPTIONS (host 'localhost', port '5432', dbname 'yangjing');
 CREATE SERVER
 ```
 
 *创建用户映射*
 
 ```
-pg2=# CREATE USER MAPPING FOR pg2 SERVER foreign_server OPTIONS (user 'yangbajing', password 'yangbajing');
+pg2=# CREATE USER MAPPING FOR pg2 SERVER foreign_server OPTIONS (user 'yangjing', password 'yangjing');
 CREATE USER MAPPING
 ```
 
@@ -423,7 +423,7 @@ GRANT
 ```
 psql -h localhost -U pg2 -d pg2
 pg2=> select * from foreign_t_role ;
- id |    name    |          created_at           
+ id |    name    |          created_at
 ----+------------+-------------------------------
   1 | 超级管理员 | 2018-02-01 22:03:17.168906+08
   2 | 管理员     | 2018-02-01 22:03:17.168906+08
@@ -441,8 +441,8 @@ INSERT 0 1
 回到第1个数据库，我们可以看到由外部表插入进来的数据：
 
 ```
-yangbajing=> select * from t_role ;
- id |    name    |          created_at           
+yangjing=> select * from t_role ;
+ id |    name    |          created_at
 ----+------------+-------------------------------
   1 | 超级管理员 | 2018-02-01 22:03:17.168906+08
   2 | 管理员     | 2018-02-01 22:03:17.168906+08
@@ -462,7 +462,7 @@ yangbajing=> select * from t_role ;
 git clone https://github.com/EnterpriseDB/mysql_fdw
 cd mysql_fdw
 ```
-    
+
 2、配置 `pg_config` 目录：`export PATH=/opt/local/pgsql/10.1/bin:$PATH`。
 
 3、配置 `mysql_config` 目录。这里使用官方的 YUM 源安装 MySQL 5.7，详细的安装使用说明请查阅官方文档：[https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/](https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/)。
@@ -512,7 +512,7 @@ CREATE SERVER mysql_server FOREIGN DATA WRAPPER mysql_fdw OPTIONS (host '127.0.0
 
 3、创建用户映射
 ```
-CREATE USER MAPPING FOR yangbajing SERVER mysql_server OPTIONS(username 'yangbajing', password 'yang.Bajing2018');
+CREATE USER MAPPING FOR yangjing SERVER mysql_server OPTIONS(username 'yangjing', password 'yang.Bajing2018');
 ```
 
 4、创建外部表
@@ -521,8 +521,8 @@ CREATE FOREIGN TABLE foreign_t_book(
   isbn VARCHAR(255),
   title VARCHAR(255),
   created_at TIMESTAMPTZ
-) SERVER mysql_server OPTIONS(dbname 'yangbajing', table_name 't_book');
-GRANT ALL ON TABLE foreign_t_book to yangbajing ;
+) SERVER mysql_server OPTIONS(dbname 'yangjing', table_name 't_book');
+GRANT ALL ON TABLE foreign_t_book to yangjing ;
 ```
 
 现在，可以在 PG 中访问并使用在 MySQL 中创建的表和数据了，和 **postgres_fdw** 一样，也可以远程修改原表的内容。

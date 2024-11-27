@@ -15,7 +15,7 @@
     "source": {
       "version": "1.7.2.Final",
       "connector": "postgresql",
-      "name": "yangbajing",
+      "name": "yangjing",
       "ts_ms": 1720009113862,
       "snapshot": "true",
       "db": "postgres",
@@ -46,7 +46,7 @@
     "source": {
       "version": "1.7.2.Final",
       "connector": "postgresql",
-      "name": "yangbajing",
+      "name": "yangjing",
       "ts_ms": 1720009113866,
       "snapshot": "last",
       "db": "postgres",
@@ -77,7 +77,7 @@
     "source": {
       "version": "1.7.2.Final",
       "connector": "postgresql",
-      "name": "yangbajing",
+      "name": "yangjing",
       "ts_ms": 1720009132761,
       "snapshot": "false",
       "db": "postgres",
@@ -108,7 +108,7 @@
     "source": {
       "version": "1.7.2.Final",
       "connector": "postgresql",
-      "name": "yangbajing",
+      "name": "yangjing",
       "ts_ms": 1720009233618,
       "snapshot": "false",
       "db": "postgres",

@@ -29,7 +29,7 @@ PostgreSQL JDBC 驱动支持 `reWriteBatchedInserts=true` 连接参数，可以�
         int[] rets = jdbcTemplate.batchUpdate("insert into test(id, name) values (?, ?)", Arrays.asList(
                 new Object[]{1, "羊八井"},
                 new Object[]{2, "杨景"},
-                new Object[]{3, "yangbajing"}
+                new Object[]{3, "yangjing"}
         ));
         System.out.println(Arrays.toString(rets));
     }
@@ -91,7 +91,7 @@ import java.sql.Statement;
 import java.util.*;
 import java.util.function.BiConsumer;
 
-public class DataIServiceImpl<M extends BaseMapper<T>, T> 
+public class DataIServiceImpl<M extends BaseMapper<T>, T>
         extends ServiceImpl<M, T>
         implements DataIService<T> {
 
@@ -101,9 +101,9 @@ public class DataIServiceImpl<M extends BaseMapper<T>, T>
             return 0;
         }
         String sqlStatement = sqlStatement(SqlMethod.INSERT_ONE);
-        List<BatchResult> rets = 
+        List<BatchResult> rets =
             batchExecute(entityList,
-                         batchSize, 
+                         batchSize,
                          (sqlSession, entity) -> sqlSession.insert(sqlStatement, entity));
         return rets.stream()
                 .mapToInt(result -> Arrays.stream(result.getUpdateCounts())

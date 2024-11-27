@@ -9,7 +9,7 @@ tags:
   - exactly-once
 ---
 
-Flink Kafka Exactly Once，确定一次消费/写入。示例代码：[https://github.com/yangbajing/learn-bigdata/tree/develop/learn-flink/src/main/scala/connector/kafka](https://github.com/yangbajing/learn-bigdata/tree/develop/learn-flink/src/main/scala/connector/kafka) 。
+Flink Kafka Exactly Once，确定一次消费/写入。示例代码：[https://github.com/yangjing/learn-bigdata/tree/develop/learn-flink/src/main/scala/connector/kafka](https://github.com/yangjing/learn-bigdata/tree/develop/learn-flink/src/main/scala/connector/kafka) 。
 
 ## Consumer
 
@@ -23,7 +23,7 @@ Producer exactly once 需要启用 flink 的检查点，并在实例化 `FlinkKa
 
     val properties = new Properties()
     properties.setProperty("bootstrap.servers", "localhost:9092")
- 
+
     val producer = new FlinkKafkaProducer[NameTimestamp](
       topic,
       new NameTimestampSerializationSchema(topic),

@@ -13,7 +13,7 @@ tags:
   - akka-persistence
 ---
 
-电子书：[《Akka Cookbook》](https://www.yangbajing.me/akka-cookbook/)
+电子书：[《Akka Cookbook》](https://www.yangjing.me/akka-cookbook/)
 
-码云镜像：[《Akka Cookbook》](https://yangbajing.gitee.io/akka-cookbook/)
+码云镜像：[《Akka Cookbook》](https://yangjing.gitee.io/akka-cookbook/)
 

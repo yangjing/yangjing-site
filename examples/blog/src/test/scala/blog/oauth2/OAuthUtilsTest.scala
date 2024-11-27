@@ -11,7 +11,7 @@ class OAuthUtilsTest extends FunSuite with Matchers {
   }
 
   test("generateToken(userId)") {
-    val token = OAuthUtils.generateToken("yangbajing")
+    val token = OAuthUtils.generateToken("yangjing")
     println(token)
     println(token.size)
   }

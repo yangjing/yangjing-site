@@ -60,7 +60,7 @@ public class JacksonDemo {
     JavaTime javaTime2 = objectMapper.treeToValue(javaTimeNode, JavaTime.class);
 
     User user = new User();
-    user.setId("yangbajing");
+    user.setId("yangjing");
     user.setMetadata(Json.of("{\"job\":\"programmer\",\"workYears\":14}\n"));
     String userText = objectMapper.writeValueAsString(user);
     out.println(userText);

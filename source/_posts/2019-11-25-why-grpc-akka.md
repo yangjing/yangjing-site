@@ -63,4 +63,4 @@ Akka从2.6开始，`akka-remote`已不建议在用户代码里使用，同时`ak
 
 ***一句话总结：Akka Cluster之外推荐使用Akka gRPC！***
 
-接下来，也许你会对 [《Akka Cookbook》](https://www.yangbajing.me/akka-cookbook/) 感兴趣。
+接下来，也许你会对 [《Akka Cookbook》](https://www.yangjing.me/akka-cookbook/) 感兴趣。

@@ -143,7 +143,7 @@ returning id;
 
 ### 枚举
 
-枚举是一个很好的工具，但 JDBC 默认不支持，或者大部分 ORM 库都将枚举序列化成字符串，可实际上我们希望它能够被当成 **Integer** 来进行序列化。（对于枚举应用还比较少的同学，可以先看看我的另一篇文章：[Java 枚举：有效应用](https://yangbajing.gitee.io/2020/08/08/java-%E6%9E%9A%E4%B8%BE%EF%BC%9A%E6%9C%89%E6%95%88%E5%BA%94%E7%94%A8/)）。
+枚举是一个很好的工具，但 JDBC 默认不支持，或者大部分 ORM 库都将枚举序列化成字符串，可实际上我们希望它能够被当成 **Integer** 来进行序列化。（对于枚举应用还比较少的同学，可以先看看我的另一篇文章：[Java 枚举：有效应用](https://yangjing.gitee.io/2020/08/08/java-%E6%9E%9A%E4%B8%BE%EF%BC%9A%E6%9C%89%E6%95%88%E5%BA%94%E7%94%A8/)）。
 
 Mybatis-plus 提供了对枚举的更好的支持，文档在此：[https://mp.baomidou.com/guide/enum.html](https://mp.baomidou.com/guide/enum.html)  。
 
@@ -151,13 +151,13 @@ Mybatis-plus 提供了对枚举的更好的支持，文档在此：[https://mp.b
 
 在 Mybatis-plus 里使用 JSONB 类型，可以使用 Mybatis-plus 提供的 **字段类型处理器** [https://mp.baomidou.com/guide/typehandler.html](https://mp.baomidou.com/guide/typehandler.html) 。
 
-而对于直接使用 mybatis 的用户，也可以直接自定义 `TypeHandler`。在此可以找到自定义 `TypeHandler` 的代码：[https://github.com/yangbajing/spring-example/tree/develop/example-common/src/main/java/me/yangbajing/springreactive/mybatis/handlers](https://github.com/yangbajing/spring-example/tree/develop/example-common/src/main/java/me/yangbajing/springreactive/mybatis/handlers) 。
+而对于直接使用 mybatis 的用户，也可以直接自定义 `TypeHandler`。在此可以找到自定义 `TypeHandler` 的代码：[https://github.com/yangjing/spring-example/tree/develop/example-common/src/main/java/me/yangjing/springreactive/mybatis/handlers](https://github.com/yangjing/spring-example/tree/develop/example-common/src/main/java/me/yangjing/springreactive/mybatis/handlers) 。
 
 实现自定义 `JsonNodeTypeHandler` 后，可通过 mybatis-plus 的配置参数全局加载：
 
 ```yaml
 mybatis-plus:
-  type-handlers-package: me.yangbajing.springreactive.mybatis.handlers
+  type-handlers-package: me.yangjing.springreactive.mybatis.handlers
 ```
 
 这样，就可以像使用 `String`、`LocalDateTime` 等类型一样在 Mybatis 里使用 Jackson（支持`JsonNode`、`ObjectNode`、`ArrayNode`）了。

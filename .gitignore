@@ -20,7 +20,7 @@ node_modules/
 public/
 .deploy*/
 /.idea/
-yangbajing-blog.iml
+yangjing-site.iml
 /logfile
 target/
 themes/hueman/.git/

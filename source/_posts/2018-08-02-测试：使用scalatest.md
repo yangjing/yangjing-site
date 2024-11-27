@@ -30,7 +30,7 @@ ScalaTest的安装、使用很简单，可以直接在命令行使用，如：
 $ scalac -cp scalatest-app_2.12-3.0.5.jar ExampleSpec.scala
 ```
 
-也可以和sbt集成使用。对sbt不了解的读者可以先看：[http://www.yangbajing.me/scala-web-development/env.1.html](http://www.yangbajing.me/scala-web-development/env.1.html) 来快速的学习sbt的使用方法。
+也可以和sbt集成使用。对sbt不了解的读者可以先看：[http://www.yangjing.me/scala-web-development/env.1.html](http://www.yangjing.me/scala-web-development/env.1.html) 来快速的学习sbt的使用方法。
 
 在sbt中添加ScalaTest支持非常简单，在构建配置文件（一般是build.sbt）中添加库依赖即可。
 
@@ -55,7 +55,7 @@ class FirstTest extends WordSpec with MustMatchers {
       stack.pop() mustBe 2
       stack.pop() mustBe 1
     }
-    
+
     "throw NoSuchElementException if an empty stack is popped" in {
       val emptyStack = mutable.Stack.empty[Int]
       assertThrows[NoSuchElementException] {

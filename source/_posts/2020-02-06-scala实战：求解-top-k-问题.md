@@ -21,9 +21,9 @@ final case class Movie(id: String, rating: Double)
 
 val top10 = scala.io.Source.fromFile("/tmp/movies.csv").getLines()
   //.drop(1) // if csv header exists.
-  .flatMap { line => 
+  .flatMap { line =>
     line.split(',') match {
-      case Array(movieId, rating) => Try(Movie(movieId, rating.toDouble)).toOption  
+      case Array(movieId, rating) => Try(Movie(movieId, rating.toDouble)).toOption
       case _ => None
     }
   }
@@ -42,9 +42,9 @@ final case class Movie(id: String, rating: Double)
 var top10 = Vector[Movie]()
 scala.io.Source.fromFile("/tmp/movies.csv").getLines()
   //.drop(1) // if csv header exists.
-  .flatMap { line => 
+  .flatMap { line =>
     line.split(',') match {
-      case Array(movieId, rating) => Some(Movie(movieId, rating.toDouble))  
+      case Array(movieId, rating) => Some(Movie(movieId, rating.toDouble))
       case _ => None
     }
   }
@@ -175,14 +175,14 @@ class TopKSink(TOP_K: Int) extends GraphStageWithMaterializedValue[SinkShape[Mov
 
 ## 解法4：通过 Akka HTTP 在下载文件的同时求出Top K个得分最高的电影
 
-Akka HTTP提供了 HTTP Client/Server 实现，同时它也是基于 Akka Streams 实现的。上一步我们已经定义了 `TopKSink` 来消费流数据，而通过 Akka HTTP Client 获得的响应数据也是一个流（`Source[ByteString, Any]`）。我们可以将获取 `movies.csv` 文件的 HTTP 请求与取得分最高的K部电影两个任务结合到一起，**实现内存固定、处理数据无限的 Top K 程序（假设网络稳定不会断开）**。 
+Akka HTTP提供了 HTTP Client/Server 实现，同时它也是基于 Akka Streams 实现的。上一步我们已经定义了 `TopKSink` 来消费流数据，而通过 Akka HTTP Client 获得的响应数据也是一个流（`Source[ByteString, Any]`）。我们可以将获取 `movies.csv` 文件的 HTTP 请求与取得分最高的K部电影两个任务结合到一起，**实现内存固定、处理数据无限的 Top K 程序（假设网络稳定不会断开）**。
 
 ```scala
 implicit val system = ActorSystem(Behaviors.ignore, "topK")
 implicit val ec = system.executionContext
 val TOP_K = 10
 val URL =
-  "https://gitee.com/yangbajing/akka-cookbook/raw/master/cookbook-streams/src/main/resources/movies.csv"
+  "https://gitee.com/yangjing/akka-cookbook/raw/master/cookbook-streams/src/main/resources/movies.csv"
 
 val topKF = Http(system).singleRequest(HttpRequest(uri = URL)).flatMap { response =>
   response.entity.dataBytes
@@ -222,5 +222,5 @@ system.terminate()
 
 本文使用4种方式来求解 Top K 问题，从简单粗暴的全量读入内存并排序；到不使用排序通过一次遍历获得 Top K；再使用 Akka Streams 以流式方式异步获得；最后，通过结合 Akka HTTP 和 Akka Streams，可以HTTP请求的同时计算 Top K。
 
-有关 Akka HTTP 更多内容可阅读 [《Scala Web 开发——基于Akka HTTP》](https://www.yangbajing.me/scala-web-development/) 。
+有关 Akka HTTP 更多内容可阅读 [《Scala Web 开发——基于Akka HTTP》](https://www.yangjing.me/scala-web-development/) 。
 

@@ -4,7 +4,7 @@ categories: scala
 tags: scala, akka, actor
 ---
 
-*本文源码在：[https://github.com/yangbajing/scala-applications/tree/master/combine-request](https://github.com/yangbajing/scala-applications/tree/master/combine-request)*
+*本文源码在：[https://github.com/yangjing/scala-applications/tree/master/combine-request](https://github.com/yangjing/scala-applications/tree/master/combine-request)*
 
 ## 背景
 
@@ -51,7 +51,7 @@ trait ForwardCompanyActor extends Actor {
       .foreach(maybe => self ! ReceiveQueryCompanyResult(companyName, maybe))
   }
 
-  def registerListener(companyName: String, listener: ActorRef): Unit = 
+  def registerListener(companyName: String, listener: ActorRef): Unit =
     companyListeners.get(companyName) match {
       case Some(actors) =>
         companyListeners.put(companyName, actors + listener)

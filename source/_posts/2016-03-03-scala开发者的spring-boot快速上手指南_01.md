@@ -15,7 +15,7 @@ tags:
 （文章查考了：[Scala开发者的SpringBoot快速入门指南
 ](http://afoo.me/posts/2015-07-21-scala-developers-springboot-guide.html)，谢谢王福强老师的分享。）
 
-（本文示例在：[https://github.com/yangbajing/spring-boot-scala/tree/v01](https://github.com/yangbajing/spring-boot-scala/tree/v01)）
+（本文示例在：[https://github.com/yangjing/spring-boot-scala/tree/v01](https://github.com/yangjing/spring-boot-scala/tree/v01)）
 
 **创建支持Scala的Spring Boot应用**
 
@@ -31,7 +31,7 @@ Java社区一般使用 [Maven](http://maven.apache.org/)或[Gradle](http://gradl
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.yangbajing.springscala</groupId>
+    <groupId>me.yangjing.springscala</groupId>
     <artifactId>springscala</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -205,9 +205,9 @@ object Build extends Build {
     .settings(
       description := "Spring boot scala",
       version := "0.0.1",
-      homepage := Some(new URL("https://github.com/yangbajing/spring-boot-scala")),
-      organization := "me.yangbajing",
-      organizationHomepage := Some(new URL("http://www.yangbajing.me")),
+      homepage := Some(new URL("https://github.com/yangjing/spring-boot-scala")),
+      organization := "me.yangjing",
+      organizationHomepage := Some(new URL("http://www.yangjing.me")),
       startYear := Some(2016),
       scalaVersion := "2.11.7",
       scalacOptions ++= Seq(

@@ -19,7 +19,7 @@ category:
 在使用 gitlab 做 CI/CD 时，需要将构建好的制品推送到云存储中（比如 [华为云 OBS](https://www.huaweicloud.com/product/obs.html)、[阿里云 OSS](https://www.aliyun.com/product/oss)、[AWS S3](https://aws.amazon.com/s3/) 等），然后在部署的时候再直接从云存储中下载。
 为方便使用，就使用 clap 和 opendal 开发了一个简单的云存储命令行工具，此示例支持 OBS 和 OSS，需要添加其它云存储支持也非常方便，具体可以参考 [https://docs.rs/opendal/latest/opendal/services/](https://docs.rs/opendal/latest/opendal/services/)。
 
-本文示例的完整代码见： [https://github.com/yangbajing/technique-rust/tree/main/clis/storage-cli](https://github.com/yangbajing/technique-rust/tree/main/clis/storage-cli)
+本文示例的完整代码见： [https://github.com/yangjing/technique-rust/tree/main/clis/storage-cli](https://github.com/yangjing/technique-rust/tree/main/clis/storage-cli)
 
 ## Clap
 
@@ -27,7 +27,7 @@ category:
 
 ### Clap 的 Parser 宏
 
-首先来定义主结构：[`DevopsCmd`](https://github.com/yangbajing/technique-rust/blob/main/clis/storage-cli/src/cmd/devops_cmd.rs)。 在`#[derive(Parser))]` 中添加 `Parser` 来自动实现命令行参数解析功能，可以通过不同的命令行参数配置存储服务、存储桶、认证信息及通过配置文件指定等。
+首先来定义主结构：[`DevopsCmd`](https://github.com/yangjing/technique-rust/blob/main/clis/storage-cli/src/cmd/devops_cmd.rs)。 在`#[derive(Parser))]` 中添加 `Parser` 来自动实现命令行参数解析功能，可以通过不同的命令行参数配置存储服务、存储桶、认证信息及通过配置文件指定等。
 
 ```rust
 #[derive(Debug, Parser)]
@@ -224,7 +224,7 @@ async fn get_object_key_to_dst(op: &Operator, object_key: &str, dst: &str) -> Re
 
 #### 打印文件元信息
 
-通过 `op.stat(object_key).await?;` 函数可以获取文件元信息，然后通过 `println!` 函数打印出来。具体代码见： [https://github.com/yangbajing/technique-rust/blob/main/clis/storage-cli/src/cmd/file_operation.rs](https://github.com/yangbajing/technique-rust/blob/main/clis/storage-cli/src/cmd/file_operation.rs) 的 `dump_stat` 函数。
+通过 `op.stat(object_key).await?;` 函数可以获取文件元信息，然后通过 `println!` 函数打印出来。具体代码见： [https://github.com/yangjing/technique-rust/blob/main/clis/storage-cli/src/cmd/file_operation.rs](https://github.com/yangjing/technique-rust/blob/main/clis/storage-cli/src/cmd/file_operation.rs) 的 `dump_stat` 函数。
 
 ### 编译执行
 

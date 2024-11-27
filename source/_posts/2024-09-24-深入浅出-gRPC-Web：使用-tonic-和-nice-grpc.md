@@ -126,7 +126,7 @@ cargo add tonic-web tokio-stream
 
 ### serverside streaming
 
-定义一个 gRPC 服务端流式 RPC，完整定义见：[user.proto](https://github.com/yangbajing/grpc-microservices-with-rust/blob/main/tonic-getting/proto/getting/v1/user.proto)。
+定义一个 gRPC 服务端流式 RPC，完整定义见：[user.proto](https://github.com/yangjing/grpc-microservices-with-rust/blob/main/tonic-getting/proto/getting/v1/user.proto)。
 
 ```protobuf
 service User {
@@ -136,7 +136,7 @@ service User {
 
 当前 tonic 的 gRPC-Web 实现只支持单向的服务端流式 RPC，所以这里只有返回值 `UserDto` 是流式响应的。
 
-实现 Rust 服务端流代码，完整代码见：[user.rs](https://github.com/yangbajing/grpc-microservices-with-rust/blob/main/tonic-getting/src/grpc/user.rs)。
+实现 Rust 服务端流代码，完整代码见：[user.rs](https://github.com/yangjing/grpc-microservices-with-rust/blob/main/tonic-getting/src/grpc/user.rs)。
 
 ```rust
 use tokio::sync::mpsc;
@@ -154,7 +154,7 @@ impl User for UserService {
     // 创建一个无限重复的迭代器
     let repeat = std::iter::repeat_with(|| UserDto {
       id: 1,
-      email: "yangbajing@gmail.com".to_string(),
+      email: "yangjing@gmail.com".to_string(),
       status: 1,
       ctime: now_millis(), // 每次生成元素时都将获取当前最新时间戳
       ..Default::default()
@@ -200,7 +200,7 @@ impl User for UserService {
 
 [nice-grpc-web](https://www.npmjs.com/package/nice-grpc-web) 提供了对 gRPC-Web 客户端很好的支持，它将生成用户友好的 typescript 代码。
 
-下面是在 React Effect 中使用 nice-grpc-web 调用 serverside streaing 客户端的代码示例（完成代码见：[page.tsx](https://github.com/yangbajing/grpc-microservices-with-rust/blob/main/nextjs-getting/src/app/profile/page.tsx)）：
+下面是在 React Effect 中使用 nice-grpc-web 调用 serverside streaing 客户端的代码示例（完成代码见：[page.tsx](https://github.com/yangjing/grpc-microservices-with-rust/blob/main/nextjs-getting/src/app/profile/page.tsx)）：
 
 ```typescript
   useEffect(() => {
@@ -242,4 +242,4 @@ impl User for UserService {
 
 本文介绍了 gRPC-Web 的基本概念，和使用 gRPC-Web 的收益，并展示了如何使用 tonic 和 nice-grpc-web 实现一个简单的 gRPC-Web 客户端。当前 gRPC-Web 还不支持双向流通信，但 whatng 项目正在开发中，待其稳定以后就可以将 gRPC 强大的双向流处理功能引入到 gRPC-Web 中。
 
-完整代码可在 [https://github.com/yangbajing/grpc-microservices-with-rust/](https://github.com/yangbajing/grpc-microservices-with-rust/) 仓库获取。tonic-getting 为 gRPC 后端项目，nextjs-geting 为 Web 前端项目。
+完整代码可在 [https://github.com/yangjing/grpc-microservices-with-rust/](https://github.com/yangjing/grpc-microservices-with-rust/) 仓库获取。tonic-getting 为 gRPC 后端项目，nextjs-geting 为 Web 前端项目。
