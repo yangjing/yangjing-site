@@ -104,5 +104,5 @@ theme: hueman
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/yangjing/yangjing.github.io.git
+  repo: git@github.com:yangjing/yangjing.github.io.git
   branch: main
