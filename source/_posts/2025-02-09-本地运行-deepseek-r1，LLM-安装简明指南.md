@@ -5,7 +5,7 @@ tags: [ollama, deepseek-r1, deepseek, llm]
 
 ---
 
-本文是本地运行 deepseek - r1 的 LLM 安装指南。涵盖 Ollama 安装（分 macOS、Linux、Windows 系统）、DeepSeek - R1 模型下载与运行（命令行及 API 调用）、常用命令、注意事项，还介绍了 Chatbox 安装与使用，助力用户顺利部署。本文将介绍如下内容：
+本文是本地运行 deepseek-r1 的 LLM 安装指南。涵盖 Ollama 安装（分 macOS、Linux、Windows 系统）、模型下载与运行（命令行及 API 调用）、常用命令、注意事项，还介绍了 Chatbox 安装与使用，助力用户顺利部署。
 
 - 下载并安装 ollama
 - 使用 ollama 运行各种模型（LLM）
@@ -138,8 +138,8 @@ curl http://localhost:11434/api/generate -d '{
   `ollama list`
 - **删除模型**
   `ollama rm deepseek-r1`
-- **查看运行日志**
-  `ollama serve`（在前台运行查看实时日志）
+- **查看正在运行模型**
+  `ollama ps`
 
 ### 硬件要求
 
@@ -150,7 +150,7 @@ curl http://localhost:11434/api/generate -d '{
 
 ---
 
-通过以上步骤，即可在本地顺利运行 DeepSeek-R1 模型。如果遇到问题，可通过 `ollama logs` 查看错误信息或检查模型文件完整性。
+通过以上步骤，即可在本地顺利运行 DeepSeek-R1 模型。
 
 ## Chatbox
 
