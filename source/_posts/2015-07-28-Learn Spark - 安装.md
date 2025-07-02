@@ -1,11 +1,15 @@
 title: Learn Spark - 安装
 date: 2015-07-28 00:23:23
-categories: 
-- bigdata
+categories:
+
+- data
 - spark
+
 tags:
+
 - scala
 - spark
+
 ---
 
 ## 安装
@@ -16,7 +20,7 @@ tags:
 wget -c http://www.interior-dsgn.com/apache/spark/spark-1.4.1/spark-1.4.1.tgz
 ```
 
-编译Spark，使用 `scala 2.11`
+编译 Spark，使用 `scala 2.11`
 
 ```
 ./dev/change-version-to-2.11.sh
@@ -34,18 +38,17 @@ Welcome to
     _\ \/ _ \/ _ `/ __/  '_/
    /___/ .__/\_,_/_/ /_/\_\   version 1.4.1
       /_/
-         
+
 Using Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_40)
 Type in expressions to have them evaluated.
 Type :help for more information.
 Spark context available as sc.
 SQL context available as sqlContext.
 
-scala> 
+scala>
 ```
 
 看到以上信息就代表 `Spark` 已经安装好了。
-
 
 ## 简单的配置
 
@@ -60,9 +63,9 @@ export SPARK_WORKER_MEMORY="2G"
 export SPARK_WORKER_CORE="2"
 ```
 
-因为编译的是 `scala 2.11` 版本，所以应在配置文件里指定 `Spark` 以scala 2.11进行启动。
+因为编译的是 `scala 2.11` 版本，所以应在配置文件里指定 `Spark` 以 scala 2.11 进行启动。
 
-接着就可以Standalone模式启动spark了：`./sbin/start-all.sh`
+接着就可以 Standalone 模式启动 spark 了：`./sbin/start-all.sh`
 
 ## spark-submit
 
@@ -108,8 +111,7 @@ $SPARK_HOME/bin/spark-submit \
   $SPARK_HOME/README.md /tmp/wordcount
 ```
 
-* --class 指定要运行的class
-* --master 程序要运行的master
-* target/... 程序提交的jar包
-* inputAttr [outputAttr ...] 程序执行参数
-
+- --class 指定要运行的 class
+- --master 程序要运行的 master
+- target/... 程序提交的 jar 包
+- inputAttr [outputAttr ...] 程序执行参数

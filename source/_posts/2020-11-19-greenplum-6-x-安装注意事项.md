@@ -1,12 +1,16 @@
 title: Greenplum 6.x 安装注意事项
 date: 2020-11-19 15:06:59
 category:
-  - bigdata
-  - greenplum
+
+- data
+- greenplum
+
 tags:
-  - greenplum
-  - postgresql
-  - centos
+
+- greenplum
+- postgresql
+- centos
+
 ---
 
 ## /etc/sysctl.conf 设置注意

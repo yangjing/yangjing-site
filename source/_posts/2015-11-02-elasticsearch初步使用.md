@@ -1,23 +1,27 @@
-title: Elasticsearch初步使用
+title: Elasticsearch 初步使用
 date: 2015-11-02 15:40:09
 categories:
-- bigdata
+
+- data
 - elasticsearch
+
 tags:
+
 - elasticsearch
 - 集群
+
 ---
 
 # 集群安装
 
-安装一个两个结节的简单集群，其中一个Master，一个Slave。两台机器的网络分别是：
+安装一个两个结节的简单集群，其中一个 Master，一个 Slave。两台机器的网络分别是：
 
 ```
 192.168.31.101  sc-007
 192.168.31.48   scdev-001
 ```
 
-**Master配置**
+**Master 配置**
 
 ```yaml
 cluster:
@@ -31,7 +35,7 @@ discovery:
   zen.ping.unicast.hosts: ["sc-007"]
 ```
 
-**Slave配置**
+**Slave 配置**
 
 ```yaml
 cluster:

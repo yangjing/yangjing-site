@@ -1,6 +1,6 @@
 title: Linux 部署 Oracle11G
 date: 2016-10-30 22:40:09
-categories: bigdata
+categories: data
 tags:
 
 - linux

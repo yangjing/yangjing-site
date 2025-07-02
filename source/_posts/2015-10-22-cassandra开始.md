@@ -1,12 +1,16 @@
-title: Canssandra开始
+title: Canssandra 开始
 date: 2015-10-22 21:50:49
 updated: 2015-10-26 21:30:32
-categories: 
-- bigdata
+categories:
+
+- data
 - cassandra
+
 tags:
+
 - cassandra
 - 集群
+
 ---
 
 ## Install Cassandra
@@ -21,13 +25,13 @@ mv apache-cassandra-2.1.11 cassandra-2.1
 mkdir data commitlog log saved_caches
 ```
 
-启动`bin/cassandra -f`即可，`-f`参数的意思是让cassandra服务在前台启动，这样可以各种上日志输出就将直接打印到终端上。
+启动`bin/cassandra -f`即可，`-f`参数的意思是让 cassandra 服务在前台启动，这样可以各种上日志输出就将直接打印到终端上。
 
-## Cassandra集群搭建
+## Cassandra 集群搭建
 
-我们构建一个有3个节点的cassandra集群，IP分别为：`192.168.31.101`、`192.168.31.102`、`192.168.31.103`。
+我们构建一个有 3 个节点的 cassandra 集群，IP 分别为：`192.168.31.101`、`192.168.31.102`、`192.168.31.103`。
 
-编辑Cassandra配置文件：`conf/cassandra.yaml`：
+编辑 Cassandra 配置文件：`conf/cassandra.yaml`：
 
 **endpoint_snitch**：
 
@@ -35,7 +39,7 @@ mkdir data commitlog log saved_caches
 endpoint_snitch: GossipingPropertyFileSnitch
 ```
 
-配置Cassandra集群支持机架感知，推荐产品使用。
+配置 Cassandra 集群支持机架感知，推荐产品使用。
 
 **listen_address**：
 
@@ -48,6 +52,7 @@ listen_address: 192.168.31.101
 ```
 rpc_address:
 ```
+
 （注意：`rpc_address:`后面的空格也要删除掉）
 
 **seeds**：
@@ -75,7 +80,7 @@ commitlog_directory: /usr/app/cassandra/commitlog
 saved_caches_directory: /usr/app/cassandra/saved_caches
 ```
 
-先配置好一台，再把相同的配置文件和目录复制到其它节点上。在修改相应IP地址即可。之后挨个启动集群，可以看到下面这样的节点连结信息：
+先配置好一台，再把相同的配置文件和目录复制到其它节点上。在修改相应 IP 地址即可。之后挨个启动集群，可以看到下面这样的节点连结信息：
 
 ```
 INFO  12:33:35 Handshaking version with /192.168.31.102
@@ -88,31 +93,31 @@ INFO  12:33:36 Updating topology for /192.168.31.102
 
 ## CQLSH
 
-#### 创建keyspace
+#### 创建 keyspace
 
 ```
 CREATE KEYSPACE watch_log WITH replication = {'class': 'NetworkTopologyStrategy', 'dc1': 2 };
 ```
 
-## cqlsh支持查询中文
+## cqlsh 支持查询中文
 
 默认的`cqlsh`是可以正常显示中文的，但当你的查询语句里有中文时，就会报错：
 
-``` sql
+```sql
 cqlsh:mykeyspace> select * from users where fname = '羊';
 'ascii' codec can't decode byte 0xe7 in position 35: ordinal not in range(128)
 ```
 
 因为`cqlsh`是用`Python`编写的，所以定位是`Python`对中文支持的问题。这个问题也很好解决，加入以下两行代码即可：
 
-``` python
+```python
 reload(sys)
 sys.setdefaultencoding("utf-8")
 ```
 
 加入后代码显示如下：
 
-``` python
+```python
 from glob import glob
 from StringIO import StringIO
 from uuid import UUID
@@ -124,10 +129,10 @@ description = "CQL Shell for Apache Cassandra"
 version = "5.0.1"
 ```
 
-## 一些重要的Cassandra配置
+## 一些重要的 Cassandra 配置
 
 - cluster_name: 限制只能加入相同名字的集群
-- num_tokens: 
+- num_tokens:
 
 ## 系统优化
 
@@ -145,4 +150,3 @@ scdata - as unlimited
 ```
 $ sudo sysctl -p
 ```
-

@@ -1,13 +1,17 @@
-title: Cassandra用户认证
+title: Cassandra 用户认证
 date: 2016-01-23 11:55:37
-categories: 
-- bigdata
+categories:
+
+- data
 - cassandra
+
 tags:
+
 - cassandra
+
 ---
 
-Cassandra默认是不需要用户名和密码登录的，这样其实并不安全。
+Cassandra 默认是不需要用户名和密码登录的，这样其实并不安全。
 
 修改配置文件：conf/cassandra.yaml 启动用户名密码登录：
 
@@ -16,13 +20,13 @@ authenticator: PasswordAuthenticator
 authorizer: CassandraAuthorizer
 ```
 
-重新启动Cassandra，再次使用 bin/cqlsh 登录会提示 **AuthenticationFailed('Remote end requires authentication.',)**。这时使用用户名和密码登录即可。
+重新启动 Cassandra，再次使用 bin/cqlsh 登录会提示 **AuthenticationFailed('Remote end requires authentication.',)**。这时使用用户名和密码登录即可。
 
 ```
 ./cqlsh 192.168.0.101 -u cassandra -p cassandra
 ```
 
-使用 PasswordAuthenticator 后，cassandra会默认创建super user，用户名和密码均为：cassandra。那么，如何修改该super user的密码呢？
+使用 PasswordAuthenticator 后，cassandra 会默认创建 super user，用户名和密码均为：cassandra。那么，如何修改该 super user 的密码呢？
 
 ```
 alter user cassandra with password 'cassandra1';
@@ -42,7 +46,7 @@ create user user1 with password 'password1';
 GRANT ALL PERMISSIONS ON KEYSPACE data TO data;
 ```
 
-*建议分配可访问表*
+_建议分配可访问表_
 
 ```
 GRANT select PERMISSION ON system.size_estimates TO devser;
@@ -77,7 +81,7 @@ resource 为被分配的资源，如下几种：
 - authenticator: org.apache.cassandra.auth.PasswordAuthenticator: 用户密码将保存在 system_auth.credentials 表
 - authorizer: org.apache.cassandra.auth.CassandraAuthorizer: 用户权限将保存在 system_auth.permissions 表。
 
-system_auth 的默认 replication 因子为1，这在集群中是非常危险的。若其中一个节点挂掉，而正好账号相关数据只保存在挂掉的那一台上会造成登录时不能通过授权认证。最好通过 `ALTER KEYSPACE` 命令修改默认设置。
+system_auth 的默认 replication 因子为 1，这在集群中是非常危险的。若其中一个节点挂掉，而正好账号相关数据只保存在挂掉的那一台上会造成登录时不能通过授权认证。最好通过 `ALTER KEYSPACE` 命令修改默认设置。
 
 **SimpleStrategy**
 
@@ -91,5 +95,4 @@ ALTER KEYSPACE "system_auth" WITH REPLICATION = { 'class' : 'SimpleStrategy', 'r
 ALTER KEYSPACE "system_auth" WITH REPLICATION = {'class' : 'NetworkTopologyStrategy', 'dc1' : 2, 'dc2' : 3};
 ```
 
-*注：使用`NetworkTopology`需要设置`cassandra.yaml`的`endpoint_snitch: GossipingPropertyFileSnitch`等具有机架感知功能的snitch*
-
+_注：使用`NetworkTopology`需要设置`cassandra.yaml`的`endpoint_snitch: GossipingPropertyFileSnitch`等具有机架感知功能的 snitch_

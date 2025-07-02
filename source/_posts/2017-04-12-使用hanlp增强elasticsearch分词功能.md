@@ -1,14 +1,18 @@
-title: 使用HanLP增强Elasticsearch分词功能
+title: 使用 HanLP 增强 Elasticsearch 分词功能
 date: 2017-04-12 15:17:12
 categories:
-- bigdata
+
+- data
 - elasticsearch
+
 tags:
+
 - hanlp
 - elasticsearch
+
 ---
 
-*hanlp-ext 插件源码地址：https://github.com/hualongdata/hanlp-ext*
+_hanlp-ext 插件源码地址：https://github.com/hualongdata/hanlp-ext_
 
 **Elasticsearch** 默认对中文分词是按“字”进行分词的，这是肯定不能达到我们进行分词搜索的要求的。官方有一个 **SmartCN** 中文分词插件，另外还有一个 IK 分词插件使用也比较广。但这里，我们采用 **HanLP** 这款 **自然语言处理工具** 来进行中文分词。
 
@@ -23,7 +27,7 @@ Elasticsearch 的默认分词效果是惨不忍睹的。
     }
 ```
 
-*输出：*
+_输出：_
 
 ```json
 {
@@ -153,7 +157,7 @@ Elasticsearch 的默认分词效果是惨不忍睹的。
     }
 ```
 
-*输出：*
+_输出：_
 
 ```json
 {

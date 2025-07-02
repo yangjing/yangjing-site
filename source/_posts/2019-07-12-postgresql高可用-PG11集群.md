@@ -1,24 +1,28 @@
-title: PostgreSQL高可用 - PG 11集群
+title: PostgreSQL 高可用 - PG 11 集群
 date: 2019-07-12 15:04:31
 categories:
-- bigdata
+
+- data
 - postgresql
+
 tags:
+
 - postgresql
 - 集群
 - cluster
+
 ---
 
-1. [《PostgreSQL从入门到不后悔》](https://www.yangjing.me/2018/02/05/postgresql%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8D%E5%90%8E%E6%82%94/)
-2. [《PostgreSQL高可用：逻辑复制》](https://www.yangjing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/)
-3. [《PostgreSQL高可用 - PG 11集群》](http://localhost:4000/2019/07/12/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8-PG11%E9%9B%86%E7%BE%A4/)
+1. [《PostgreSQL 从入门到不后悔》](https://www.yangjing.me/2018/02/05/postgresql%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8D%E5%90%8E%E6%82%94/)
+2. [《PostgreSQL 高可用：逻辑复制》](https://www.yangjing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/)
+3. [《PostgreSQL 高可用 - PG 11 集群》](http://localhost:4000/2019/07/12/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8-PG11%E9%9B%86%E7%BE%A4/)
 
 - 高可用性：数据库服务器可以一起工作， 这样如果主要的服务器失效则允许一个第二服务器快速接手它的任务
 - 负载均衡: 允许多个计算机提供相同的数据
 
 本文使用的主要技术有：
 
-- CentOS 7 x86\_64
+- CentOS 7 x86_64
 - PostgreSQL 11.4
 
 ![PG主热备集群架构示意图](/img/PG主热备001-002-003.png)
@@ -33,7 +37,7 @@ $ sudo yum -y update
 $ sudo yum -y install postgresql11-server postgresql11-contrib postgresql
 ```
 
-更多关于PG安装和基础使用方面内容可阅读 [《PostgreSQL从入门到不后悔》](https://www.yangjing.me/2018/02/05/postgresql%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8D%E5%90%8E%E6%82%94/) 和 [《PostgreSQL高可用：逻辑复制》](https://www.yangjing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/) 。
+更多关于 PG 安装和基础使用方面内容可阅读 [《PostgreSQL 从入门到不后悔》](https://www.yangjing.me/2018/02/05/postgresql%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8D%E5%90%8E%E6%82%94/) 和 [《PostgreSQL 高可用：逻辑复制》](https://www.yangjing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/) 。
 
 ## PostgreSQL 集群设置
 
@@ -41,13 +45,13 @@ $ sudo yum -y install postgresql11-server postgresql11-contrib postgresql
 
 ![高可用、负载均衡和复制特性矩阵](/img/高可用、负载均衡和复制特性矩阵.png)
 
-***本文将基于PostgreSQL官方提供的基于流式的WAL数据复制功能搭建一个 主/热备 数据库集群。***
+**_本文将基于 PostgreSQL 官方提供的基于流式的 WAL 数据复制功能搭建一个 主/热备 数据库集群。_**
 
-根据 **PostgreSQL单机配置**，安装3台服务器。IP地址设置分别如下，并加入 `/etc/hosts` 中：
+根据 **PostgreSQL 单机配置**，安装 3 台服务器。IP 地址设置分别如下，并加入 `/etc/hosts` 中：
 
 - 主节点：10.0.32.37
 - 热备节点：10.0.32.35
-- 逻辑复制节点：10.0.32.36，有关逻辑复制的内容请阅读：[《PostgreSQL高可用：逻辑复制》](https://www.yangjing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/)
+- 逻辑复制节点：10.0.32.36，有关逻辑复制的内容请阅读：[《PostgreSQL 高可用：逻辑复制》](https://www.yangjing.me/2019/07/10/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%EF%BC%9A%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/)
 
 ## 主节点（10.0.32.37）
 
@@ -69,7 +73,7 @@ max_wal_sender = 4
 wal_keep_segments = 10
 ```
 
-3.. 在 `pg_hba.conf` 文件中为 **pgrepuser** 设置权限规则。允许 **pgrepuser** 从所有地址连接到主节点，并使用基于MD5的密码加密方式。
+3.. 在 `pg_hba.conf` 文件中为 **pgrepuser** 设置权限规则。允许 **pgrepuser** 从所有地址连接到主节点，并使用基于 MD5 的密码加密方式。
 
 ```
 host    replication     pgrepuser       0.0.0.0/0               md5
@@ -91,7 +95,7 @@ $ sudo systemctl reload postgresql-11
 
 ## 从节点
 
-1.. 首先停止从机上的PostgreSQL服务（非启动过刚可忽略此步骤）。
+1.. 首先停止从机上的 PostgreSQL 服务（非启动过刚可忽略此步骤）。
 
 ```
 sudo systemctl stop postgresql-11
@@ -144,7 +148,7 @@ restore_command = cp %p ../archive/%f'
 
 - `restore_command` 如果发现从属服务器处理事务日志的速度较慢，跟不上主服务器产生日志的速度，为避免主服务器产生积压，你可以在从属服务器上指定一个路径用于缓存暂未处理的日志。请在 recovery.conf 中添加如下一个代码行，该代码行在不同操作系统下会有所不同。
 
-5.. 启动从数据库
+  5.. 启动从数据库
 
 ```
 $ sudo systemctl start postgresql-11
@@ -152,11 +156,11 @@ $ sudo systemctl start postgresql-11
 
 **启动复制进程的注意事项**
 
-*一般情况下，我们建议先启动所有从属服务器再启动主服务器，如果顺序反过来，会导致主服务器已经开始修改数据并生成事务日志了，但从属服务器却还无法进行复制处理，这会导致主服务器的日志积压。如果在未启动主服务器的情况下先启动从属服务器，那么从属服务器日志中会报错，说无法连接到主服务器，但这没有关系，忽略即可。等所有从属服务器都启动完毕后，就可以启动主服务器了。*
+_一般情况下，我们建议先启动所有从属服务器再启动主服务器，如果顺序反过来，会导致主服务器已经开始修改数据并生成事务日志了，但从属服务器却还无法进行复制处理，这会导致主服务器的日志积压。如果在未启动主服务器的情况下先启动从属服务器，那么从属服务器日志中会报错，说无法连接到主服务器，但这没有关系，忽略即可。等所有从属服务器都启动完毕后，就可以启动主服务器了。_
 
-*此时所有主从属服务器应该都是能访问的。主服务器的任何修改，包括安装一个扩展包或者是新建表这种对系统元数据的修改，都会被同步到从属服务器。从属服务器可对外提供查询服务。*
+_此时所有主从属服务器应该都是能访问的。主服务器的任何修改，包括安装一个扩展包或者是新建表这种对系统元数据的修改，都会被同步到从属服务器。从属服务器可对外提供查询服务。_
 
-*如果希望某个从属服务器脱离当前的主从复制环境，即此后以一台独立的 PostgreSQL 服务器身份而存在，请直接在其 data 文件夹下创建一个名为 failover.now 的空文件。从属服务器会在处理完当前接收到的最后一条事务日志后停止接收新的日志，然后将 recovery.conf 改名为 recovery.done。此时从属服务器已与主服务器彻底解除了复制关系，此后这台PostgreSQL 服务器会作为一台独立的数据库服务器存在，其数据的初始状态就是它作为从属服务器时处理完最后一条事务日志后的状态。一旦从属服务器脱离了主从复制环境，就不可能再切换回主从复制状态了，要想切回去，必须按照前述步骤一切从零开始。*
+_如果希望某个从属服务器脱离当前的主从复制环境，即此后以一台独立的 PostgreSQL 服务器身份而存在，请直接在其 data 文件夹下创建一个名为 failover.now 的空文件。从属服务器会在处理完当前接收到的最后一条事务日志后停止接收新的日志，然后将 recovery.conf 改名为 recovery.done。此时从属服务器已与主服务器彻底解除了复制关系，此后这台 PostgreSQL 服务器会作为一台独立的数据库服务器存在，其数据的初始状态就是它作为从属服务器时处理完最后一条事务日志后的状态。一旦从属服务器脱离了主从复制环境，就不可能再切换回主从复制状态了，要想切回去，必须按照前述步骤一切从零开始。_
 
 ### 测试主/备服务
 
@@ -261,7 +265,6 @@ test=# select pg_is_in_recovery();
 
 ![pg-从库从主库同步数据示例](/img/pg-从库从主库同步数据示例.png)
 
-
 ### 数据库复制状态
 
 **Prod-DataHouse-3**
@@ -306,7 +309,7 @@ sync_state       | async
 -bash-4.2$ /usr/pgsql-11/bin/pg_ctl promote -D $PGDATA
 ```
 
-此时在节点 centos7-002 上，PostgreSQL数据库已经从备节点转换成了主节点。同时，`recovery.conf` 文件也变为了 `recovery.done` 文件，表示此节点不再做为从节点进行数据复制。
+此时在节点 centos7-002 上，PostgreSQL 数据库已经从备节点转换成了主节点。同时，`recovery.conf` 文件也变为了 `recovery.done` 文件，表示此节点不再做为从节点进行数据复制。
 
 ```
 test=# select pg_is_in_recovery();
@@ -324,7 +327,7 @@ test=# SELECT * FROM test;
 
 ```
 
-3.. 将原主节点（**centos7-001**）变为级联从节点（当前主节点已改为centos7-002）。
+3.. 将原主节点（**centos7-001**）变为级联从节点（当前主节点已改为 centos7-002）。
 
 在 centos7-001 节点上编辑 `postgresql.conf`，并开启热备模式：
 
@@ -342,11 +345,10 @@ recovery_target_timeline = 'latest'
 restore_command = cp %p ../archive/%f'
 ```
 
-（重）启动PostgreSQL数据库，节点 centos7-001 现在成为了一个 **级联从节点** 。
+（重）启动 PostgreSQL 数据库，节点 centos7-001 现在成为了一个 **级联从节点** 。
 
 ![PG主备切换以后集群架构示意图](/img/PG主热备002-003-001.png)
 
 ## 总结
 
-PostgreSQL官方支持基于流式复制的WAL实现的主/热备高可用集群机制，同时我们还可以搭配 PgPool-II 在应用层实现
-
+PostgreSQL 官方支持基于流式复制的 WAL 实现的主/热备高可用集群机制，同时我们还可以搭配 PgPool-II 在应用层实现

@@ -1,14 +1,17 @@
-title: Elasticsearch备份、恢复
+title: Elasticsearch 备份、恢复
 date: 2017-12-05 14:27:33
 categories:
-- bigdata
+
+- data
 - elasticsearch
+
 tags:
+
 ---
 
 ## 迁移注意事项
 
-- 保证ES集群不再接受新的数据(如果是备份的话，这一点可以不考虑，但是做数据迁移的话，建议这样做）。同一个repository只应有一个集群可写，其它集群都应以readonly模式连接。
+- 保证 ES 集群不再接受新的数据(如果是备份的话，这一点可以不考虑，但是做数据迁移的话，建议这样做）。同一个 repository 只应有一个集群可写，其它集群都应以 readonly 模式连接。
 - 不建议直接在生产环境做这些操作，最好是先在本地搭建一个和生产环境一样的集群环境，创建一些测试数据，把整个过程先跑一遍，然后再到生产环境操作。
 
 `dn126` 为要备份的源数据节点，而 `localhost` 为待恢复的目标数据节点
@@ -59,4 +62,3 @@ mv elasticsearch-backups/* /opt/haishu/var/elasticsearch/backups/
 ```
 curl -i -X POST http://localhost:9200/_snapshot/backups/snapshot_1/_restore
 ```
-
