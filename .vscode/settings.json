@@ -3,8 +3,27 @@
         "**/target": true
     },
     "cSpell.words": [
+        "AFNO",
+        "cmap",
+        "comparision",
+        "cuda",
+        "dataframe",
+        "figsize",
+        "kwargs",
+        "matplotlib",
+        "ndays",
+        "nsteps",
         "println",
+        "pyplot",
+        "RMSE",
         "serde",
-        "usize"
+        "SFNO",
+        "ssrd",
+        "timedelta",
+        "usize",
+        "xarray",
+        "xlabel",
+        "ylabel",
+        "Zarr"
     ]
 }
