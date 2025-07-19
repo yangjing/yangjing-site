@@ -24,6 +24,7 @@
         "RMSE",
         "serde",
         "SFNO",
+        "sohu",
         "sqlmodel",
         "ssrd",
         "tablename",
