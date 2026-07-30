@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "committing": {
+      "source": "yangjing/skills",
+      "sourceType": "github",
+      "skillPath": "skills/committing/SKILL.md",
+      "computedHash": "2e749884e4715ba1cc4a685ef869e6c4ba8dfa35b37dab4b301584abcfdc2817"
+    }
+  }
+}
