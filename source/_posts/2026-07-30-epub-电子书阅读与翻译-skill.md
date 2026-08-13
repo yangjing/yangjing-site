@@ -7,7 +7,7 @@ tags: [claude-code, epub, ai, skill, ebook]
 
 最近两年技术书的出版速度明显更快了，一个新概念从落地到成书，过去怎么也得一年，现在几个月就出来了。书多了，根本读不过来。
 
-之前读英文原版，三四百页的书零碎时间读，读完一章忘一章，最后记住的也就几个核心概念。后来琢磨：AI 编程工具既然能读代码、写代码，能不能帮我读书？
+之前读英文原版，三四百页的书零碎时间读，读完一章忘一章，最后记住的也就几个核心概念。后来琢磨：AI 编程工具既然能读代码、写代码，能不能辅助我读书？
 
 于是写了两款 agent skill：[ebook-ai-notes](https://github.com/yangjing/skills/tree/main/skills/ebook-ai-notes) 做读书笔记，[translate-epub](https://github.com/yangjing/skills/tree/main/skills/translate-epub) 做全书翻译，放到 GitHub 上了。Claude Code 能用，zcode、codex、kimi、opencode 这些兼容 agent skills 的工具也一样用。
 
@@ -105,7 +105,7 @@ book-dual/          # 双语版
 
 如果前面用 ebook-ai-notes 读过了，把术语表路径告诉它，术语一致性会更好。没读过也没关系，skill 会自己建，只是多花一两分钟。
 
-翻译了三四本书，说几个体会。
+### 翻译了三四本书，说几个体会
 
 表格翻译是惊喜。技术书的表格往往是全书最浓缩的对比信息，以前读英文原版经常跳过去。双语版把原表格保留、译表格追加在下方，对比着看效率高很多。
 
