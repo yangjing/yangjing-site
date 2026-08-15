@@ -1,11 +1,11 @@
-title: RAG 系统开发 01：使用 rig 调用 ollama 的模型
+title: RAG 系统开发 01：使用 rig 调用 Ollama 的模型
 date: 2025-02-12 09:31:30
 category: ai
 tags: ["rag", "ollama", "rig", "rust"]
 
 ---
 
-这是个系列文章，将介绍基于 Rust 语言生态来开发一个 RAG 系统。本文是文章的第一篇，主要介绍如何使用 [rig](https://crates.io/crates/rig-core) 来调用 ollama 模型。
+这是个系列文章，将介绍基于 Rust 语言生态来开发一个 RAG 系统。本文是文章的第一篇，主要介绍如何使用 [rig](https://crates.io/crates/rig-core) 来调用 Ollama 模型。
 
 ## 项目准备
 
@@ -41,7 +41,7 @@ index = "https://rsproxy.cn/crates.io-index"
 git-fetch-with-cli = true
 ```
 
-### 安装 ollama 并下载模型
+### 安装 Ollama 并下载模型
 
 详细安装及使用可我之前文章： [本地运行 deepseek-r1，LLM 安装简明指南](https://yangjing.github.io/2025/02/09/%E6%9C%AC%E5%9C%B0%E8%BF%90%E8%A1%8C-deepseek-r1%EF%BC%8CLLM-%E5%AE%89%E8%A3%85%E7%AE%80%E6%98%8E%E6%8C%87%E5%8D%97/#Ollama)
 
@@ -68,7 +68,7 @@ code .
 
 ## 使用 rig-core
 
-### 通过 openai 兼容模式访问 ollama API
+### 通过 OpenAI 兼容模式访问 Ollama API
 
 编辑 `main.rs` 文件，修改为以下代码：
 
@@ -219,4 +219,4 @@ $ cargo run -q
 
 ## 小结
 
-本文简单的介绍了如何使用 `rig-core` 库来使用 Ollama 模型，并展示了如何使用 `rig-core` 库来使用 Ollama 模型进行 RAG 的实现。这是一个基本的示例，实际应用中可能需要根据需求进行一些调整和扩展。后面会有更详细的介绍和示例，比如：文档（PDF、Word、excel、PPT）解析、数据持久化存储、……敬请期待。
+本文简单的介绍了如何使用 `rig-core` 库来使用 Ollama 模型，并展示了如何使用 `rig-core` 库来使用 Ollama 模型进行 RAG 的实现。这是一个基本的示例，实际应用中可能需要根据需求进行一些调整和扩展。后面会有更详细的介绍和示例，比如：文档（PDF、Word、Excel、PPT）解析、数据持久化存储、……敬请期待。

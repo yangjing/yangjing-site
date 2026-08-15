@@ -5,11 +5,11 @@ tags: [ollama, deepseek-r1, deepseek, llm]
 
 ---
 
-本文是本地运行 deepseek-r1 的 LLM 安装指南。涵盖 Ollama 安装（分 macOS、Linux、Windows 系统）、模型下载与运行（命令行及 API 调用）、常用命令、注意事项，还介绍了 Chatbox 安装与使用，助力用户顺利部署。
+本文是本地运行 DeepSeek-R1 的 LLM 安装指南。涵盖 Ollama 安装（分 macOS、Linux、Windows 系统）、模型下载与运行（命令行及 API 调用）、常用命令、注意事项，还介绍了 Chatbox 安装与使用，助力用户顺利部署。
 
-- 下载并安装 ollama
-- 使用 ollama 运行各种模型（LLM）
-- 安装 chatbox 通过图形化界面使用模型
+- 下载并安装 Ollama
+- 使用 Ollama 运行各种模型（LLM）
+- 安装 Chatbox 通过图形化界面使用模型
 
 ## Ollama
 
@@ -146,7 +146,7 @@ curl http://localhost:11434/api/generate -d '{
 - 至少 8GB 可用内存（7B 模型）。
 - 推荐使用 NVIDIA GPU 并安装 CUDA 驱动加速。
 
-![M1 vs Nvidia GPU 性能对比](/img/ai/m1-vs-nvidia.jpg)
+![M1 vs NVIDIA GPU 性能对比](/img/ai/m1-vs-nvidia.jpg)
 
 ---
 
@@ -154,7 +154,7 @@ curl http://localhost:11434/api/generate -d '{
 
 ## Chatbox
 
-Chatbox AI 是一款 AI 客户端应用和智能助手，支持众多先进的 AI 模型和 API，可在 Windows、MacOS、Android、iOS、Linux 和网页版上使用。访问 [https://chatboxai.app/zh#download](https://chatboxai.app/zh#download) 下载适合你操作系统的版本。
+Chatbox AI 是一款 AI 客户端应用和智能助手，支持众多先进的 AI 模型和 API，可在 Windows、macOS、Android、iOS、Linux 和网页版上使用。访问 [https://chatboxai.app/zh#download](https://chatboxai.app/zh#download) 下载适合你操作系统的版本。
 
 ### 安装 Chatbox
 
@@ -176,7 +176,7 @@ Chatbox AI 是一款 AI 客户端应用和智能助手，支持众多先进的 A
 
 在 **设置 -> 对话** 页面中，你可以自定义对话设置，如：
 
-deepseek 官方提供了提示词示例：[https://api-docs.deepseek.com/zh-cn/prompt-library/](https://api-docs.deepseek.com/zh-cn/prompt-library/)
+DeepSeek 官方提供了提示词示例：[https://api-docs.deepseek.com/zh-cn/prompt-library/](https://api-docs.deepseek.com/zh-cn/prompt-library/)
 ![alt text](/img/ai/chatbox-set-chat.png)
 
 **本机使用 Chatbox 效果如下：**

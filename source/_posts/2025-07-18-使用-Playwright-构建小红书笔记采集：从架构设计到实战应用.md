@@ -28,7 +28,7 @@ _**免责声明：本文内容仅用于学习和研究，不建议用于任何�
 ```python
 # 主要依赖
 playwright  # 浏览器自动化
-httpx      # 异步HTTP客户端，还提供了同步 API，其 API 类似于 requests
+httpx      # 异步 HTTP 客户端，还提供了同步 API，其 API 类似于 requests
 aiofiles   # 异步文件操作
 crawl4ai   # 本次只用到了它的 HTML 到 Markdown 转换功能
 psycopg    # PostgreSQL 数据库连接
@@ -193,7 +193,7 @@ async def extract_note_detail(self, note_item_locator: Locator, index: int):
   note_container = self.page.locator('.note-container')
   await note_container.wait_for(state='visible', timeout=10000)
 
-  # 3. 提取笔记ID
+  # 3. 提取笔记 ID
   note_id = self._extract_note_id_from_url(self.page.url)
 
   # 4. 提取基础信息
@@ -215,15 +215,15 @@ async def extract_note_detail(self, note_item_locator: Locator, index: int):
 class OriginalPageBase(SQLModel):
   """文章数据模型"""
 
-  crawl_keyword_id: int = Field(sa_type=BigInteger, foreign_key='crawl_keyword.id', description='抓取关键词ID')
-  page_id: str | None = Field(default=None, max_length=255, description='文章ID')
-  crawl_url: str = Field(max_length=2048, description='要爬取的url')
-  url: str = Field(max_length=2048, description='文章原始实际访问的url')
+  crawl_keyword_id: int = Field(sa_type=BigInteger, foreign_key='crawl_keyword.id', description='抓取关键词 ID')
+  page_id: str | None = Field(default=None, max_length=255, description='文章 ID')
+  crawl_url: str = Field(max_length=2048, description='要爬取的 URL')
+  url: str = Field(max_length=2048, description='文章原始实际访问的 URL')
   title: str = Field(max_length=255, description='文章标题')
   author: str = Field(max_length=255, description='文章作者')
   publish_time: datetime | None = Field(default=None, description='发布时间')
-  content: str = Field(sa_type=Text, description='文章内容（HTML格式）')
-  markdown: str = Field(sa_type=Text, description='文章内容（Markdown格式）')
+  content: str = Field(sa_type=Text, description='文章内容（HTML 格式）')
+  markdown: str = Field(sa_type=Text, description='文章内容（Markdown 格式）')
   images: list[ImageInfo] = Field(default_factory=list, sa_type=JsonArrayImageInfo, description='文章图片列表')
   ctime: datetime = Field(description='创建（抓取）时间', default_factory=datetime.now)
   mtime: datetime | None = Field(description='更新时间', default=None)
@@ -234,7 +234,7 @@ class OriginalPageBase(SQLModel):
     return self
 
   def _generate_markdown(self, markdown: str, has_metadata: bool, tail_images: bool) -> str:
-    """生成Markdown内容"""
+    """生成 Markdown 内容"""
     # ....
     return markdown
 
@@ -251,7 +251,7 @@ class OriginalPage(OriginalPageBase, table=True):
 
 ```python
 async def _extract_image_urls(self, note_container: Locator) -> list[str]:
-  """提取笔记中的所有图片URL"""
+  """提取笔记中的所有图片 URL"""
   image_urls = []
 
   # 定位轮播图容器
@@ -305,7 +305,7 @@ await self.page.wait_for_timeout(rand_swing(500, 1500))
 await search_input.click()  # 先点击获得焦点
 await search_input.fill(keyword)  # 再输入内容
 
-# 使用JS直接操作避免检测
+# 使用 JS 直接操作避免检测
 await img_link.evaluate('e => e.click()')
 ```
 
@@ -371,12 +371,12 @@ if self.crawl_keyword.save_as_db:
     original_page_svc = OriginalPageSvc(session)
     original_page_svc.create_original_page(original_page)
 
-# JSON格式存储
+# JSON 格式存储
 if self.crawl_keyword.save_as_json:
   async with aiofiles.open(json_path, 'w', encoding='utf-8') as f:
     await f.write(original_page.model_dump_json(indent=2))
 
-# Markdown格式存储
+# Markdown 格式存储
 if self.crawl_keyword.save_as_markdown:
   async with aiofiles.open(md_path, 'w', encoding='utf-8') as f:
     await f.write(original_page.markdown)
@@ -444,7 +444,7 @@ async def check_login(self):
 
 ```python
 # 使用信号量控制并发数
-semaphore = asyncio.Semaphore(3)  # 最多3个并发任务
+semaphore = asyncio.Semaphore(3)  # 最多 3 个并发任务
 
 async def process_with_semaphore(note_item):
   async with semaphore:
