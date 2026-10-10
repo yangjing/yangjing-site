@@ -1,5 +1,5 @@
 ---
-title: AI Coding 与 tmux 实践
+title: AI 编程与 tmux 实践
 date: 2026-04-03 14:30:00
 category: work
 tags: [tmux, ai, claude-code, codex, kimi-code, terminal]
